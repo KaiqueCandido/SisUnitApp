@@ -1,0 +1,211 @@
+<main>
+    <div class="row">
+        <div class="card">                            
+            <div class="card-content">                
+                <span class="card-title center">Gerenciamento de Veiculos</span>         
+
+                <div class="row">
+                    <div class="col">
+                        <a data-target="modalNovoVeiculo" ng-click="carregarDadosParaCadastro()" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Novo Veiculo"><i class="material-icons">add</i></a>
+                    </div>    
+                    <div class="col">                    
+                        <a data-target="modalVisualizacaoVeiculo" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes do Veiculo"><i class="material-icons">search</i></a>
+                    </div>    
+                    <div class="col">
+                        <a data-target="modalEditarVeiculo" ng-click="prepararEdicao()" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Veiculo"><i class="material-icons">edit</i></a>
+                    </div>    
+                    <div class="col">
+                        <a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeVeiculo" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Veiculo"><i class="material-icons">delete</i></a>
+                    </div>
+                    <div class="col">
+                        <a ng-hide="veiculoSelecionadoInativo" data-target="modalConfirmacaoAtivacaoDeVeiculo" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Veiculo"><i class="material-icons">check_box</i></a>
+                    </div>        
+                    <div class="col m9">
+                        <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual o veiculo que você está buscando?"></input>
+                    </div>                
+                </div>         
+                
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>                                        
+                            <th>Descrição</th>
+                            <th>Placa</th>                            
+                            <th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th> 
+                        </tr>
+                    </thead> 
+
+                    <tbody>
+                        <tr ng-click="selecionaVeiculo(veiculo)" ng-repeat="veiculo in veiculos| filter:{descricao:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true" ng-hide="veiculo === null">
+                            <td ng-style="{'background-color': veiculo.selecionado}">{{veiculo.descricao}}</td>
+                            <td ng-style="{'background-color': veiculo.selecionado}">{{veiculo.placa | placaFilter}}</td>
+                            <td ng-style="{'background-color': veiculo.selecionado}">{{veiculo.statusDoCadastro}}</td>
+                        </tr>          
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- CADASTRO DE VEICULO -->
+<div id="modalNovoVeiculo" class="modal modal-fixed-footer modal-veiculo">
+    <form ng-submit="salvarVeiculo(veiculo)">
+        <div class="modal-content">
+            <nav class="center">
+                <h5 class="brand-logo center">Novo Veiculo</h5>
+            </nav>
+            <div class="row">        
+                <div class="row">                    
+                    <div class="input-field col s6">
+                        <input id="descricao" type="text" class="validate" ng-model="veiculo.descricao"  required maxlength="150"></input>
+                        <label for="descricao">Descrição</label>
+                    </div>                              
+                    <div class="input-field col s6">
+                        <input id="placa" type="text" class="validate" ng-model="veiculo.placa"  required maxlength="25" ui-placa></input>
+                        <label for="placa">Placa</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="qtdeAssentos" type="number" class="validate" ng-model="veiculo.qtdeAssentos"  required></input>
+                        <label for="qtdeAssentos">Quantidade de Assentos</label>
+                    </div>                                                      
+                    <div class="input-field col s6">
+                        <select id="estado" class="validate"  required>
+                            <option value="" disabled="" selected="">Selecione um estado</option>
+                            <option ng-repeat="estado in estados" value="{{estado}}">{{estado.uf}}</option>
+                        </select>
+                        <label for="estado">Estado</label>                                        
+                    </div>                               
+                    <div class="input-field col s6">
+                        <select id="cidade" class="validate"  required>
+                            <option value="" disabled="" selected="">Selecione uma cidade</option>
+                            <option ng-hide="veiculo.estado.id != cidade.idestado" ng-repeat="cidade in cidades" value="{{cidade}}">{{cidade.nome}}</option>
+                        </select>
+                        <label for="cidade">Cidade</label>                                        
+                    </div>                      
+                </div>            
+            </div>       
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+            <button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+<!-- VISUALIZAR DETALHES DO VEICULO -->
+<div id="modalVisualizacaoVeiculo" class="modal modal-fixed-footer modal-veiculo">
+
+    <div class="modal-content">
+        <nav class="center">
+            <h5 class="brand-logo center">Detalhes do Veiculo</h5>
+        </nav>
+        <div class="row">        
+            <div class="row">                    
+                <div class="input-field col s4">          
+                    <label for="descricao">Descrição</label><br/>
+                    <p id="descricao">{{veiculoSelecionado.descricao}}</p>
+                </div>                                            
+                <div class="input-field col s4">          
+                    <label for="placa">Placa</label><br/>
+                    <p id="placa">{{veiculoSelecionado.placa | placaFilter}}</p>
+                </div>                                            
+                <div class="input-field col s4">          
+                    <label for="qtdeAssentos">Quantidade de Assentos</label><br/>
+                    <p id="qtdeAssentos">{{veiculoSelecionado.qtdeAssentos}}</p>
+                </div> 
+                <div class="input-field col s4">          
+                    <label for="estado">Estado</label><br/>
+                    <p id="estado">{{veiculoSelecionado.estado.nome}}</p>
+                </div> 
+                <div class="input-field col s4">          
+                    <label for="cidade">Cidade</label><br/>
+                    <p id="cidade">{{veiculoSelecionado.cidade.nome}}</p>
+                </div>
+            </div>            
+        </div>       
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</button>
+    </div>    
+</div>
+
+<!-- EDIÇÃO DE VEICULO -->
+<div id="modalEditarVeiculo" class="modal modal-fixed-footer modal-alunoSelecionado">
+    <div class="modal-content">
+        <nav class="center">
+            <h5 class="brand-logo center">Editar Veiculo</h5>
+        </nav>
+        <div class="row">        
+            <div class="row">     
+               <div class="row">                    
+                <div class="input-field col s6">
+                    <input id="descricao" type="text" class="validate" ng-model="veiculoSelecionado.descricao"  required maxlength="150"></input>
+                    <label for="descricao">Descrição</label>
+                </div>                              
+                <div class="input-field col s6">
+                    <input id="placa" type="text" class="validate" ng-model="veiculoSelecionado.placa"  required maxlength="25" ui-placa></input>
+                    <label for="placa">Placa</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="qtdeAssentos" type="number" class="validate" ng-model="veiculoSelecionado.qtdeAssentos"  required></input>
+                    <label for="qtdeAssentos">Quantidade de Assentos</label>
+                </div>                                                      
+                <div class="input-field col s6">
+                    <select id="estadoEditar" class="validate" required ng-model="veiculoSelecionado.estado.uf">
+                        <option value="" disabled="" selected="">Selecione um estado</option>
+                        <option ng-repeat="estado in estados" value="{{estado.uf}}">{{estado.uf}}</option>
+                    </select>
+                    <label for="estadoEditar">Estado</label>                                        
+                </div>                      
+                <div class="input-field col s6">
+                    <select id="cidadeEditar" class="validate" required ng-model="veiculoSelecionado.cidade.nome">
+                        <option value="" disabled="" selected="">Selecione uma cidade</option>
+                        <option ng-repeat="cidade in cidades" value="{{cidade.nome}}">{{cidade.nome}}</option>
+                    </select>
+                    <label for="cidadeEditar">Cidade</label>                                        
+                </div>                      
+            </div> 
+        </div>
+    </div>
+</div>            
+<div class="modal-footer">
+    <button class="waves-effect waves-green btn-flat" data-target="modalConfirmacaoAtualizacaoDeVeiculo">Atualizar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+</div>  
+</div>
+
+<!-- CONFIRMAÇÂO ATUALIZAÇÂO DE VEICULO -->
+<div id="modalConfirmacaoAtualizacaoDeVeiculo" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente atualizar esse veiculo?</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="editarVeiculo(veiculoSelecionado)" class="waves-effect waves-green btn-flat">Confirmar</button>
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>
+
+<!-- CONFIRMAÇÂO EXCLUSÃO DE VEICULO -->
+<div id="modalConfirmacaoExclusaoDeVeiculo" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente excluir esse veiculo, caso exclua o mesmo será inativado!</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="excluirVeiculo()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>
+
+<!-- CONFIRMAÇÂO DE ATIVAÇÂO DE VEICULO -->
+<div id="modalConfirmacaoAtivacaoDeVeiculo" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente ativar esse veiculo?</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="ativarVeiculo()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<nav class="teal lighten-2">
+	<ul id="slide-out" class="side-nav fixed">
+    	<li>
+    		<div class="userView teal lighten-2" align="center">      			
+      			<a href=""><img class="circle" src="img/avatar.png"></img></a>
+      			<a href=""><span class="white-text name">Usuario gestor</span></a>
+      			<a href=""><span class="white-text email">gestor@email.com</span></a>
+    		</div>
+    	</li>            	
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Inicio<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ng-click="homeGestor()"><i class="material-icons">home</i>Inicio</a></li>                
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Gerenciar<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ><i class="material-icons">account_balance</i>Instituições</a></li>
+                <li><a ng-click="gerenciarVestProcessoSeletivo()"><i class="material-icons">schedule</i>Vestibular</a></li>
+                <li><a ng-click="gerenciarCursos()"><i class="material-icons">school</i>Cursos</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Secretaria<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ><i class="material-icons">people</i>Alunos</a></li>
+                <li><a ><i class="material-icons">description</i>Matriculas</a></li>
+                <li><a ><i class="material-icons">account_balance_wallet</i>Diarios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Estatistica<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ><i class="material-icons">trending_up</i>Graficos</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Relatorios<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ><i class="material-icons">picture_as_pdf</i>Imprimir relatórios</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Comunicação<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ng-click="envioDeEmail()"><i class="material-icons">email</i>Envio de emails</a></li>
+                <li><a ng-click="envioDeSms()"><i class="material-icons">sms</i>Envio de sms</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header">Ações<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a ng-click="logout()"><i class="material-icons">power_settings_new</i>Sair</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>               
+  	</ul>
+  	<a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>    
+</nav>

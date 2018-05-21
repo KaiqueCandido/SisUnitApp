@@ -1,0 +1,25 @@
+{
+  "name": "iuniversitariocliente",
+  "authors": [
+    "Anderson Souza <jair_anderson_bs@hotmail.com>",
+    "Kaique Candido <kaiqueoliveira.ci@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.98.2",
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.4",
+    "material-design-icons-dist": "^1.1.0",
+    "angular-locale-pt-br": "^1.3.15"
+  }
+}

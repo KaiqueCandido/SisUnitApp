@@ -1,0 +1,38 @@
+.modal-confirmacao {
+	height: 100px !important;
+}
+
+.modal-overlay{
+	opacity: 0.9 !important;
+}
+
+.modal-aluno{
+	min-width: 77%;
+}
+
+.modal-veiculo{
+	min-width: 77%;
+}
+
+.modal-alunoSelecionado{
+	min-width: 77%;
+}
+
+@media only screen and (max-width : 850px) {
+	.modal {
+		width: 100% !important;
+		top: 0% !important;
+		height: 100% !important;
+		max-height: 100% !important;
+	}
+	.modal-content{
+		padding: 0px !important;
+	}
+}
+
+.modalRotaAtiva {
+	width: 100% !important;
+	top: 0% !important;
+	height: 100% !important;
+	max-height: 100% !important;
+}

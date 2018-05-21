@@ -1,0 +1,15 @@
+.page-loading {
+    
+  background: #000 !important;
+  opacity: 0.8 !important;        
+  position: absolute !important;
+  top :0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: auto !important;    
+  z-index: 1100 !important;
+
+}
+
+

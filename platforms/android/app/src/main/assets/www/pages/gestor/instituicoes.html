@@ -1,0 +1,274 @@
+<main>    
+	<div class="row">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title center">Gerenciamento de Instituições</span>			
+				
+				<div class="row">
+					<div class="col">
+						<a data-target="modalNovaInstituicao" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Nova Instituicao"><i class="material-icons">add</i></a>
+					</div>    
+					<div class="col">                    
+						<a data-target="modalVisualizacaoInstituicao" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes da Instituicao"><i class="material-icons">search</i></a>
+					</div>    
+					<div class="col">
+						<a data-target="modalEditarInstituicao" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Instituicao"><i class="material-icons">edit</i></a>
+					</div>    
+					<div class="col">
+						<a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeInstituicao" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Instituicao"><i class="material-icons">delete</i></a>
+					</div>
+					<div class="col">
+						<a ng-hide="instituicaoSelecionadaInativa" data-target="modalConfirmacaoAtivacaoDeInstituicao" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Instituicao"><i class="material-icons">check_box</i></a>
+					</div>    
+					<div class="col m8">
+						<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual a instituicao que você está buscando?"></input>
+					</div>                
+				</div>  
+
+				<table class="highlight responsive-table">
+					<thead>
+						<tr>                                        
+							<th>Sigla</th>
+							<th>Nome</th>
+							<th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th>
+						</tr>
+					</thead>        
+					<tbody>
+						<tr ng-click="selecionaInstituicao(instituicao)" ng-repeat="instituicao in instituicoes | filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
+							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.sigla}}</td>
+							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.nome}}</td>
+							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.statusDoCadastro}}</td>
+						</tr>          
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</main>
+
+<div id="modalNovaInstituicao" class="modal modal-fixed-footer">
+	<form ng-submit="salvarInstituicao(instituicao)">
+		<div class="modal-content">
+			<nav class="center">
+				<h5 class="brand-logo center">Nova Instituição</h5> 
+			</nav>
+			<div class="row">
+				<div class="row">    							
+					<div class="input-field col s6">
+						<input id="nome" type="text" class="validate" ng-model="instituicao.nome" required></input>
+						<label for="nome">Nome</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="sigla" type="text" class="validate" ng-model="instituicao.sigla" required></input>
+						<label for="sigla">Sigla</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="logradouro" type="text" class="validate" ng-model="instituicao.endereco.logradouro" required></input>
+						<label for="logradouro">Logradouro</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="bairro" type="text" class="validate" ng-model="instituicao.endereco.bairro" required></input> 
+						<label for="bairro">Bairro</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="complemento" type="text" class="validate" ng-model="instituicao.endereco.complemento" required></input> 
+						<label for="complemento">Complemento</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero" required></input>
+						<label for="numero">Numero</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="cep" type="text" class="validate" ng-model="instituicao.endereco.cep" ng-blur="pesquisaEstadoECidade(instituicao.endereco.cep)" required></input> 
+						<label for="cep">Cep</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="estado" type="text" ng-model="instituicao.endereco.estado.uf" readonly></input>
+						<label class="active" for="estado">Estado</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="municipio" type="text" ng-model="instituicao.endereco.cidade.nome" readonly></input> 
+						<label class="active" for="municipio">Municipio</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="telefoneComercial" type="text" class="validate" ng-model="instituicao.contato.telefoneComercial" required></input> 
+						<label for="telefoneComercial">Telefone Comercial</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="telefoneCelular" type="text" class="validate" ng-model="instituicao.contato.telefoneCelular"></input> 
+						<label for="telefoneCelular">Telefone Celular</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="email" type="email" class="validate" ng-model="instituicao.contato.email" required></input> 
+						<label for="email">E-mail</label>
+					</div>										
+				</div>
+			</div>       
+		</div>
+		<div class="modal-footer">
+			<button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+			<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+		</div>
+	</form>
+</div>
+
+<div id="modalVisualizacaoInstituicao" class="modal modal-fixed-footer">	
+	<div class="modal-content">
+		<nav class="center">
+			<h5 class="brand-logo center">Detalhes da Instituição</h5> 
+		</nav>
+		<div class="row">
+			<div class="row">    							
+				<div class="input-field col s4">					
+					<label for="nome">Nome</label><br/>
+					<p id="nome">{{instituicaoSelecionada.nome}}</p>
+				</div>
+				<div class="input-field col s4">
+					<label for="sigla">Sigla</label><br/>
+					<p id="sigla">{{instituicaoSelecionada.sigla}}</p>					
+				</div>
+				<div class="input-field col s4">
+					<label for="logradouro">Logradouro</label><br/>
+					<p id="logradouro">{{instituicaoSelecionada.endereco.logradouro}}</p>					
+				</div>
+				<div class="input-field col s4">
+					<label for="bairro">Bairro</label><br/>
+					<p id="bairro">{{instituicaoSelecionada.endereco.bairro}}</p>					
+				</div>
+				<div class="input-field col s4">
+					<label for="complemento">Complemento</label><br/>
+					<p id="complemento">{{instituicaoSelecionada.endereco.complemento}}</p>
+				</div>
+				<div class="input-field col s4">
+					<label for="numero">Numero</label><br/>
+					<p id="numero">{{instituicaoSelecionada.endereco.numero}}</p>
+				</div>
+				<div class="input-field col s4">
+					<label for="cep">Cep</label><br/>
+					<p id="cep">{{instituicaoSelecionada.endereco.cep}}</p>
+				</div>					
+				<div class="input-field col s4">
+					<label for="estado">Estado</label><br/>
+					<p id="estado">{{instituicaoSelecionada.endereco.estado.uf}}</p>
+				</div>					
+				<div class="input-field col s4">
+					<label for="cidade">Cidade</label><br/>
+					<p id="cidade">{{instituicaoSelecionada.endereco.cidade.nome}}</p>
+				</div>					
+				<div class="input-field col s4">
+					<label for="telefoneComercial">Telefone Comercial</label><br/>
+					<p id="telefoneComercial">{{instituicaoSelecionada.contato.telefoneComercial}}</p>
+				</div>					
+				<div class="input-field col s4">
+					<label for="telefoneCelular">Telefone Celular</label><br/>
+					<p id="telefoneCelular">{{instituicaoSelecionada.contato.telefoneCelular}}</p>
+					<p ng-hide="instituicaoSelecionada.contato.telefoneCelular.length > 0" id="telefoneCelular">--</p>
+				</div>									
+				<div class="input-field col s4">
+					<label for="email">E-mail</label><br/>
+					<p id="email">{{instituicaoSelecionada.contato.email}}</p>
+				</div>												
+			</div>
+		</div>       
+	</div>
+	<div class="modal-footer">		      
+		<button class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</button>
+	</div>	
+</div>
+
+<div id="modalEditarInstituicao" class="modal modal-fixed-footer">	
+	<div class="modal-content">
+		<nav class="center">
+			<h5 class="brand-logo center">Editar Instituição</h5> 
+		</nav>
+		<div class="row">
+			<div class="row">    							
+				<div class="input-field col s6">
+					<input id="nome" type="text" class="validate" ng-model="instituicaoSelecionada.nome" required></input>
+					<label for="nome" class="active">Nome</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="sigla" type="text" class="validate" ng-model="instituicaoSelecionada.sigla" required></input>
+					<label for="sigla" class="active">Sigla</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="logradouro" type="text" class="validate" ng-model="instituicaoSelecionada.endereco.logradouro" required></input>
+					<label for="logradouro" class="active">Logradouro</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="bairro" type="text" class="validate" ng-model="instituicaoSelecionada.endereco.bairro" required></input> 
+					<label for="bairro" class="active">Bairro</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="complemento" type="text" class="validate" ng-model="instituicaoSelecionada.endereco.complemento" required></input> 
+					<label for="complemento" class="active">Complemento</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="numero" type="text" class="validate" ng-model="instituicaoSelecionada.endereco.numero" required></input>
+					<label for="numero" class="active">Numero</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="cep" type="text" class="validate" ng-model="instituicaoSelecionada.endereco.cep" ng-blur="pesquisaEstadoECidadeEdicaoDeInstituicao(instituicaoSelecionada.endereco.cep)" required></input> 
+					<label for="cep" class="active">Cep</label>
+				</div>					
+				<div class="input-field col s6">
+					<input id="estado" type="text" ng-model="instituicaoSelecionada.endereco.estado.uf" readonly></input>
+					<label for="estado" class="active">Estado</label>
+				</div>					
+				<div class="input-field col s6">
+					<input id="municipio" type="text" ng-model="instituicaoSelecionada.endereco.cidade.nome" readonly></input> 
+					<label for="municipio" class="active">Municipio</label>
+				</div>					
+				<div class="input-field col s6">
+					<input id="telefoneComercial" type="text" class="validate" ng-model="instituicaoSelecionada.contato.telefoneComercial" required></input> 
+					<label for="telefoneComercial" class="active">Telefone Comercial</label>
+				</div>					
+				<div class="input-field col s6">
+					<input id="telefoneCelular" type="text" class="validate" ng-model="instituicaoSelecionada.contato.telefoneCelular"></input> 
+					<label for="telefoneCelular" class="active">Telefone Celular</label>
+				</div>					
+				<div class="input-field col s6">
+					<input id="email" type="email" class="validate" ng-model="instituicaoSelecionada.contato.email" required></input> 
+					<label for="email" class="active">E-mail</label>
+				</div>										
+			</div>
+		</div>       
+	</div>
+	<div class="modal-footer">
+		<button class="waves-effect waves-green btn-flat" data-target="modalConfirmacaoAtualizacaoDeInstituicao">Atualizar</button>      
+		<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+	</div>	
+</div>
+
+<div id="modalConfirmacaoAtualizacaoDeInstituicao" class="modal bottom-sheet">
+	<div class="modal-content modal-confirmacao">
+		<h5>Confirmar operação</h5>
+		<p>Deseja realmente atualizar essa Instituição?</p>
+	</div>
+	<div class="modal-footer">
+		<button ng-click="editarInstituicao(instituicaoSelecionada)" class="waves-effect waves-green btn-flat">Confirmar</button>
+		<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+	</div>
+</div>
+
+<div id="modalConfirmacaoExclusaoDeInstituicao" class="modal bottom-sheet">
+	<div class="modal-content modal-confirmacao">
+		<h5>Confirmar operação</h5>
+		<p>Deseja realmente excluir essa instituição, caso exclua a mesma será Inativada!</p>
+	</div>
+	<div class="modal-footer">
+		<button ng-click="excluirInstituicao()" class="waves-effect waves-green btn-flat">Confirmar</button>
+		<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+	</div>
+</div>
+
+<div id="modalConfirmacaoAtivacaoDeInstituicao" class="modal bottom-sheet">
+	<div class="modal-content modal-confirmacao">
+		<h5>Confirmar operação</h5>
+		<p>Deseja realmente ativar essa instituição?</p>
+	</div>
+	<div class="modal-footer">
+		<button ng-click="ativarInstituicao()" class="waves-effect waves-green btn-flat">Confirmar</button>
+		<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+	</div>
+</div>

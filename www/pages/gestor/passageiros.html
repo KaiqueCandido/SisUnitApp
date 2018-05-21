@@ -1,0 +1,567 @@
+<main>
+    <div class="row">
+        <div class="card">                            
+            <div class="card-content">                
+                <span class="card-title center">Gerenciamento de Passageiros</span>         
+
+                <div class="row">
+                    <div class="col">
+                        <a data-target="modalNovoPassageiro" ng-click="prepararDados()" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Novo Passageiro"><i class="material-icons">add</i></a>
+                    </div>    
+                    <div class="col">                    
+                        <a data-target="modalVisualizacaoPassageiro" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes do Passageiro"><i class="material-icons">search</i></a>
+                    </div>    
+                    <div class="col">
+                        <a data-target="modalEditarPassageiro" ng-click="prepararDados()" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Passageiro"><i class="material-icons">edit</i></a>
+                    </div>    
+                    <div class="col">
+                        <a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDePassageiro" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Passageiro"><i class="material-icons">delete</i></a>
+                    </div>
+                    <div class="col">
+                        <a ng-hide="passageiroSelecionadoInativo" data-target="modalConfirmacaoAtivacaoDePassageiro" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar v"><i class="material-icons">check_box</i></a>
+                    </div>        
+                    <div class="col m9">
+                        <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual o passageiro que você está buscando?"></input>
+                    </div>                
+                </div>         
+
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>                                        
+                            <th>Nome</th>                            
+                            <th>Matricula</th>                            
+                            <th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th> 
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <tr ng-click="selecionaPassageiro(passageiro)" ng-repeat="passageiro in passageiros | filter:{nome:criterioDeBusca} | filter:{conta: {statusDoCadastro:statusDasEntidades}}:true | orderBy:'nome'">
+                            <td ng-style="{'background-color': passageiro.selecionado}">{{passageiro.nome + ' ' + passageiro.sobrenome}}</td>
+                            <td ng-style="{'background-color': passageiro.selecionado}">{{passageiro.matricula}}</td>
+                            <td ng-style="{'background-color': passageiro.selecionado}">{{passageiro.conta.statusDoCadastro}}</td>
+                        </tr>          
+                    </tbody>
+                </table>            
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- CADASTRO DE PASSAGEIRO -->
+<div id="modalNovoPassageiro" class="modal modal-fixed-footer modal-veiculo">
+    <form ng-submit="salvarPassageiro()">
+        <div class="modal-content">
+            <nav class="center">
+                <h5 class="brand-logo center">Novo Passageiro</h5>
+            </nav>
+            <div class="row">        
+                <div class="row">      
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-blue">
+                            <li class="tab" ><a class="active" href="#dadosgerais">Dados Gerais</a></li>
+                            <li class="tab"><a href="#documentos">Documentos Pessoais</a></li>
+                            <li class="tab"><a href="#endereco">Endereço</a></li>
+                            <li class="tab"><a href="#contato">Contato</a></li>                            
+                            <li class="tab"><a href="#dadosconta">Dados da Conta</a></li>    
+                            <li class="tab"><a href="#rota">Rota</a></li>    
+                        </ul>
+                    </div>
+                    
+                    <div id="dadosgerais">
+                        <div class="input-field col s6">
+                            <input id="nome" type="text" class="validate" ng-model="passageiro.nome"  required maxlength="150"></input>
+                            <label for="nome">Nome</label>                            
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="sobrenome" type="text" class="validate" ng-model="passageiro.sobrenome"  required maxlength="150"></input>
+                            <label for="sobrenome">Sobrenome</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeNascimento" type="text" class="validate" ng-model="passageiro.dataDeNascimento" required ui-date></input>
+                            <label for="dataDeNascimento">Data de Nascimento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="sexo" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione um sexo</option>
+                                <option ng-repeat="sexo in sexos" value="{{sexo.$}}">{{sexo.$ | sexoFilter}}</option>
+                            </select>
+                            <label for="sexo">Sexo</label>                                        
+                        </div>                               
+                    </div>
+
+                    <div id="documentos">
+                        <div class="input-field col s6">
+                            <input id="rg" type="text" class="validate" ng-model="passageiro.documentosPessoais.rg" required maxlength="30"></input>
+                            <label for="rg">RG</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="orgaoEmissaoRg" type="text" class="validate" ng-model="passageiro.documentosPessoais.orgaoEmissaoRg" required maxlength="30"></input>
+                            <label for="orgaoEmissaoRg">Orgão Emissor</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="estado" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione um estado</option>
+                                <option ng-repeat="estado in estados" value="{{estado}}">{{estado.uf}}</option>
+                            </select>
+                            <label for="estado">Estado de Emissão</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeEmissaoDoRg" type="text" class="validate" ng-model="passageiro.documentosPessoais.dataDeEmissaoDoRg" required ui-date></input>
+                            <label for="dataDeEmissaoDoRg">Data de Emissão</label>                            
+                        </div>                    
+
+                        <div class="input-field col s6">
+                            <input id="cpf" type="text" class="validate" ng-model="passageiro.documentosPessoais.cpf" required ui-cpf></input>
+                            <label for="cpf">CPF</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="matricula" type="text" class="validate" ng-model="passageiro.matricula" required></input>
+                            <label for="matricula">Matricula</label>
+                        </div>
+                    </div>   
+
+                    <div id="endereco">
+                        <div class="input-field col s6">
+                            <input id="logradouro" type="text" class="validate" ng-model="passageiro.endereco.logradouro"></input>
+                            <label for="logradouro">Logradouro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="numero" type="text" class="validate" ng-model="passageiro.endereco.numero"></input>
+                            <label for="numero">Número</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="bairro" type="text" class="validate" ng-model="passageiro.endereco.bairro"></input>
+                            <label for="bairro">Bairro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="tipoDeZona" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione o Tipo de Zona</option>
+                                <option ng-repeat="tipoDeZona in tiposDeZona" value="{{tipoDeZona.$}}">{{tipoDeZona.$ | tipoDeZonaFilter}}</option>
+                            </select>
+                            <label for="tipoDeZona">Tipo de Zona</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="complemento" type="text" class="validate" ng-model="passageiro.endereco.complemento"></input>
+                            <label for="complemento">Complemento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cep" type="text" class="validate" ng-model="passageiro.endereco.cep" ng-blur="pesquisaEstadoECidade(passageiro.endereco.cep)" ui-cep></input>
+                            <label for="cep">CEP</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="estado" type="text" ng-model="passageiro.endereco.estado.uf" readonly></input>
+                            <label class="active" for="estado">Estado</label>
+                        </div> 
+
+                        <div class="input-field col s6">
+                            <input id="municipio" type="text" ng-model="passageiro.endereco.cidade.nome" readonly></input> 
+                            <label class="active" for="municipio">Município</label>
+                        </div>
+                    </div>
+
+                    <div id="contato">
+                        <div class="input-field col s6">
+                            <input id="telefoneFixo" type="text" class="validate" ng-model="passageiro.contato.telefoneFixo" ui-telefone></input>
+                            <label for="telefoneFixo">Telefone Fixo</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="telefoneCelular" type="text" class="validate" ng-model="passageiro.contato.telefoneCelular" required ui-telefone></input>
+                            <label for="telefoneCelular">Telefone Celular</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="email" type="email" class="validate" ng-model="passageiro.contato.email" required></input>
+                            <label for="email">E-mail</label>                            
+                        </div>
+                    </div>
+
+                    <div id="dadosconta">
+                        <div class="input-field col s6">
+                            <input id="login" type="text" class="validate" ng-model="passageiro.conta.login" required></input>
+                            <label for="login">Login</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="senha" type="password" class="validate" ng-model="passageiro.conta.senha" required></input>
+                            <label for="senha">Senha</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="confirmarSenha" type="password" class="validate" ng-model="passageiro.conta.confirmarSenha" required></input>
+                            <label for="confirmarSenha">Confirmar Senha</label>
+                        </div>                        
+                    </div>
+
+                    <div id="rota">
+                        <div class="input-field col s12">
+                            <select id="rotasParaExibicao" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione Uma Opção</option>
+                                <option ng-repeat="rota in rotas | filter:{statusDoCadastro:'ATIVO'}:true | orderBy:'descricao'" value="{{rota}}">{{rota.descricao}}</option>
+                            </select>
+                            <label for="rotasParaExibicao">Rota</label>                                        
+                        </div>
+                        <div class="input-field col s12">
+                            <div class="map" id="mapExibicaoRota"></div>
+                        </div>
+                    </div>                    
+                </div>            
+            </div>       
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+            <button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Cancelar</button>
+        </div>
+    </form>    
+</div>
+
+<!-- VISUALIZAR DETALHES DO PASSAGEIRO -->
+<div id="modalVisualizacaoPassageiro" class="modal modal-fixed-footer modal-passageiro">
+
+    <div class="modal-content">
+        <nav class="center">
+            <h5 class="brand-logo center">Detalhes do Passageiro</h5>
+        </nav>
+        <div class="row">        
+            <div class="row">                    
+                <div class="input-field col s12">          
+                    <h5>Dados Gerais</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="nome">Nome</label><br/>
+                    <p id="nome">{{passageiroSelecionado.nome + ' ' + passageiroSelecionado.sobrenome}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="dataDeNascimento">Data de Nascimento</label><br/>
+                    <p id="sobrenome">{{passageiroSelecionado.dataDeNascimento | date:'dd/MM/yyyy'}}</p>
+                </div>                                            
+
+                <div class="input-field col s4">          
+                    <label for="sexo">Sexo</label><br/>
+                    <p id="sexo">{{passageiroSelecionado.sexo | sexoFilter}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Documentos Pessoais</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="rg">RG</label><br/>
+                    <p id="rg">{{passageiroSelecionado.documentosPessoais.rg}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="orgaoEmissaoRg">Orgão Emissor</label><br/>
+                    <p id="orgaoEmissaoRg">{{passageiroSelecionado.documentosPessoais.orgaoEmissaoRg}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="estado">Estado de Emissão</label><br/>
+                    <p id="estado">{{passageiroSelecionado.documentosPessoais.estadoDeEmissaoDoRg.uf}}</p>
+                </div>                
+
+                <div class="input-field col s4">          
+                    <label for="dataDeEmissaoDoRg">Data de Emissão</label><br/>
+                    <p id="dataDeEmissaoDoRg">{{passageiroSelecionado.documentosPessoais.dataDeEmissaoDoRg | date:'dd/MM/yyyy'}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cpf">CPF</label><br/>
+                    <p id="cpf">{{passageiroSelecionado.documentosPessoais.cpf | cpfFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cnh">Matricula</label><br/>
+                    <p id="cnh">{{passageiroSelecionado.matricula}}</p>
+                </div>
+                
+                <div class="input-field col s12">          
+                    <h5>Endereço</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="logradouro">Logradouro</label><br/>
+                    <p id="logradouro">{{passageiroSelecionado.endereco.logradouro}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="numero">Número</label><br/>
+                    <p id="numero">{{passageiroSelecionado.endereco.numero}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="bairro">Bairro</label><br/>
+                    <p id="bairro">{{passageiroSelecionado.endereco.bairro}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="tipoDeZona">Zona</label><br/>
+                    <p id="tipoDeZona">{{passageiroSelecionado.endereco.tipoDeZona | tipoDeZonaFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="complemento">Complemento</label><br/>
+                    <p id="complemento">{{passageiroSelecionado.endereco.complemento}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cep">CEP</label><br/>
+                    <p id="cep">{{passageiroSelecionado.endereco.cep | cepFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="estado">Estado</label><br/>
+                    <p id="estado">{{passageiroSelecionado.endereco.estado.nome}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="municipio">Municipio</label><br/>
+                    <p id="municipio">{{passageiroSelecionado.endereco.cidade.nome}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Contato</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="telefoneFixo">Telefone Fixo</label><br/>
+                    <p id="telefoneFixo">{{passageiroSelecionado.contato.telefoneFixo | telefoneFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="telefoneCelular">Telefone Celular</label><br/>
+                    <p id="telefoneCelular">{{passageiroSelecionado.contato.telefoneCelular | telefoneFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="email">E-mail</label><br/>
+                    <p id="email">{{passageiroSelecionado.contato.email}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Dados da Conta</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="login">Login</label><br/>
+                    <p id="login">{{passageiroSelecionado.conta.login}}</p>
+                </div>                
+            </div>            
+        </div>       
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</button>
+    </div>    
+</div>
+
+<!-- EDITAR DE PASSAGEIRO -->
+<div id="modalEditarPassageiro" class="modal modal-fixed-footer modal-veiculo">
+    <form ng-submit="confirmarAtualizacaoDePassageiro()">
+        <div class="modal-content">
+            <nav class="center">
+                <h5 class="brand-logo center">Editar Passageiro</h5>
+            </nav>
+            <div class="row">        
+                <div class="row">      
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-blue">
+                            <li class="tab" ><a class="active" href="#editardadosgerais">Dados Gerais</a></li>
+                            <li class="tab"><a href="#editardocumentos">Documentos Pessoais</a></li>
+                            <li class="tab"><a href="#editarendereco">Endereço</a></li>
+                            <li class="tab"><a href="#editarcontato">Contato</a></li>                            
+                            <li class="tab"><a href="#editardadosconta">Dados da Conta</a></li>    
+                        </ul>
+                    </div>
+                    
+                    <div id="editardadosgerais">
+                        <div class="input-field col s6">
+                            <input id="nome" type="text" class="validate" ng-model="passageiroSelecionado.nome"  required maxlength="150"></input>
+                            <label for="nome">Nome</label>                            
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="sobrenome" type="text" class="validate" ng-model="passageiroSelecionado.sobrenome"  required maxlength="150"></input>
+                            <label for="sobrenome">Sobrenome</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeNascimento" type="text" class="validate" ng-model="passageiroSelecionado.dataDeNascimento" required ui-date></input>
+                            <label for="dataDeNascimento">Data de Nascimento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="sexo" class="validate" ng-model="passageiroSelecionado.sexo" required>
+                                <option value="" disabled="" selected="">Selecione um sexo</option>
+                                <option ng-repeat="sexo in sexos" value="{{sexo.$}}">{{sexo.$ | sexoFilter}}</option>
+                            </select>
+                            <label for="sexo">Sexo</label>                                        
+                        </div>                               
+                    </div>
+
+                    <div id="editardocumentos">
+                        <div class="input-field col s6">
+                            <input id="rg" type="text" class="validate" ng-model="passageiroSelecionado.documentosPessoais.rg" required maxlength="30"></input>
+                            <label for="rg">RG</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="orgaoEmissaoRg" type="text" class="validate" ng-model="passageiroSelecionado.documentosPessoais.orgaoEmissaoRg" required maxlength="30"></input>
+                            <label for="orgaoEmissaoRg">Orgão Emissor</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="estado" class="validate" ng-model="passageiroSelecionado.documentosPessoais.estadoDeEmissaoDoRg.uf" required>
+                                <option value="" disabled="" selected="">Selecione um estado</option>
+                                <option ng-repeat="estado in estados" value="{{estado.uf}}">{{estado.uf}}</option>
+                            </select>
+                            <label for="estado">Estado de Emissão</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeEmissaoDoRg" type="text" class="validate" ng-model="passageiroSelecionado.documentosPessoais.dataDeEmissaoDoRg" required ui-date></input>
+                            <label for="dataDeEmissaoDoRg">Data de Emissão</label>                            
+                        </div>                    
+
+                        <div class="input-field col s6">
+                            <input id="cpf" type="text" class="validate" ng-model="passageiroSelecionado.documentosPessoais.cpf" required ui-cpf></input>
+                            <label for="cpf">CPF</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cnh" type="text" class="validate" ng-model="passageiroSelecionado.matricula" required></input>
+                            <label for="cnh">Matricula</label>
+                        </div>
+                    </div>   
+
+                    <div id="editarendereco">
+                        <div class="input-field col s6">
+                            <input id="logradouro" type="text" class="validate" ng-model="passageiroSelecionado.endereco.logradouro"></input>
+                            <label for="logradouro">Logradouro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="numero" type="text" class="validate" ng-model="passageiroSelecionado.endereco.numero"></input>
+                            <label for="numero">Número</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="bairro" type="text" class="validate" ng-model="passageiroSelecionado.endereco.bairro"></input>
+                            <label for="bairro">Bairro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="tipoDeZona" class="validate" ng-model="passageiroSelecionado.endereco.tipoDeZona" required>
+                                <option value="" disabled="" selected="">Selecione o Tipo de Zona</option>
+                                <option ng-repeat="tipoDeZona in tiposDeZona" value="{{tipoDeZona.$}}">{{tipoDeZona.$ | tipoDeZonaFilter}}</option>
+                            </select>
+                            <label for="tipoDeZona">Tipo de Zona</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="complemento" type="text" class="validate" ng-model="passageiroSelecionado.endereco.complemento"></input>
+                            <label for="complemento">Complemento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cep" type="text" class="validate" ng-model="passageiroSelecionado.endereco.cep" ng-blur="pesquisaEstadoECidade(passageiroSelecionado.endereco.cep)" ui-cep></input>
+                            <label for="cep">CEP</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="estado" type="text" ng-model="passageiroSelecionado.endereco.estado.uf" readonly></input>
+                            <label class="active" for="estado">Estado</label>
+                        </div> 
+
+                        <div class="input-field col s6">
+                            <input id="municipio" type="text" ng-model="passageiroSelecionado.endereco.cidade.nome" readonly></input> 
+                            <label class="active" for="municipio">Município</label>
+                        </div>
+                    </div>
+
+                    <div id="editarcontato">
+                        <div class="input-field col s6">
+                            <input id="telefoneFixo" type="text" class="validate" ng-model="passageiroSelecionado.contato.telefoneFixo" ui-telefone></input>
+                            <label for="telefoneFixo">Telefone Fixo</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="telefoneCelular" type="text" class="validate" ng-model="passageiroSelecionado.contato.telefoneCelular" required ui-telefone></input>
+                            <label for="telefoneCelular">Telefone Celular</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="email" type="email" class="validate" ng-model="passageiroSelecionado.contato.email" required></input>
+                            <label for="email">E-mail</label>                            
+                        </div>
+                    </div>
+
+                    <div id="editardadosconta">
+                        <div class="input-field col s6">
+                            <input id="login" type="text" class="validate" ng-model="passageiroSelecionado.conta.login" required></input>
+                            <label for="login">Login</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="senha" type="password" class="validate" ng-model="passageiroSelecionado.conta.senha" required></input>
+                            <label for="senha">Senha</label>
+                        </div>                                                
+                    </div>
+                </div>            
+            </div>       
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit">Atualizar</button>      
+            <button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Cancelar</button>
+        </div>
+    </form>    
+</div>
+
+<!-- CONFIRMAÇÂO DE EDIÇÂO DE MOTORISTA -->
+<div id="modalConfirmacaoEdicaoDePassageiro" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente editar esse passageiro?</p>
+</div>
+<div class="modal-footer">
+    <button ng-click="editarPassageiro()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+</div>
+</div>
+
+<!-- CONFIRMAÇÂO DE EXCLUSÃO DE MOTORISTA -->
+<div id="modalConfirmacaoExclusaoDePassageiro" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente excluir esse passageiro, caso exclua o mesmo será inativado!</p>
+</div>
+<div class="modal-footer">
+    <button ng-click="inativarPassageiro()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+</div>
+</div>
+
+<!-- CONFIRMAÇÂO DE EXCLUSÃO DE MOTORISTA -->
+<div id="modalConfirmacaoAtivacaoDePassageiro" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente ativar esse passageiro?</p>
+</div>
+<div class="modal-footer">
+    <button ng-click="ativarPassageiro()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+</div>
+</div>

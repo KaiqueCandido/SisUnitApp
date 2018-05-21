@@ -1,0 +1,199 @@
+<main>
+	<div class="row">
+		<div class="card">                            
+			<div class="card-content">                				        
+
+				<div ng-repeat="rota in rotas" class="card small">
+    				<div class="card-image waves-effect waves-block waves-light">
+      					<img class="activator" src="img/backgrounMaps.jpg">
+    				</div>	
+    				<div class="card-content">
+      					<span class="card-title activator grey-text text-darken-4 font-size-card-route">
+      						{{rota.descricao}} -
+      						{{rota.cronograma.diaDaSemana}} -
+      						{{rota.cronograma.horarioDeInicio}} - 
+      						{{rota.cronograma.horarioDeTermino}}
+      						<i class="material-icons right">more_vert</i>
+      					</span>
+    				</div>
+    				<div class="card-reveal">
+      					<span class="card-title grey-text text-darken-4">Passageiros - {{rota.passageiros.length}}<i class="material-icons right">close</i></span>
+      					<p ng-show="rota.passageiros.length > 0" ng-repeat="passageiro in rota.passageiros">{{passageiro.nome}} {{passageiro.sobrenome}}</p>
+      					<p ng-show="rota.passageiros.length === 0" >Nenhum passageiro associado a rota.</p>
+    				</div>
+    				<div class="card-action waves-effect waves-green" ng-click="iniciarRota(rota)">
+          				<a href="">Abrir Mapa</a>
+        			</div>
+  				</div>  
+                <div class="card-action waves-effect waves-green" ng-click="iniciarRota()">
+                        <a href="">Abrir Mapa</a>
+                    </div>				
+				
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- CADASTRO DE ROTA -->
+<div id="modalRotaAtiva" class="modal modal-fixed-footer modalRotaAtiva">
+	<form>
+		<div class="modal-content">			
+
+			<div class="mapRotaAtiva" id="mapRotaAtiva"></div>
+
+		</div>
+		<div class="modal-footer">
+			<button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Fechar</button>
+		</div>
+	</form>    
+</div>
+
+<!-- VISUALIZAR DETALHES DA ROTA -->
+<div id="modalVisualizacaoRota" class="modal modal-fixed-footer modal-veiculo">
+    <div class="modal-content">
+        <nav class="center">
+            <h5 class="brand-logo center">Detalhes da Rota</h5>
+        </nav>
+        <div class="row">        
+            <div class="row">                    
+                <div class="input-field col s4">          
+                    <label for="descricao">Descrição</label><br/>
+                    <p id="descricao">{{rotaSelecionada.descricao}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="motorista">Motorista</label><br/>
+                    <p id="motorista">{{rotaSelecionada.motorista.nome + '' + rotaSelecionada.motorista.sobrenome}}</p>
+                </div>                                            
+                
+                <div class="input-field col s4">          
+                    <label for="veiculo">veiculo</label><br/>
+                    <p id="veiculo">{{rotaSelecionada.veiculo.descricao}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="diaDaSemana">Dia da Semana</label><br/>
+                    <p id="diaDaSemana">{{rotaSelecionada.cronograma.diaDaSemana}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="turno">Turno</label><br/>
+                    <p id="turno">{{rotaSelecionada.cronograma.turno}}</p>
+                </div>
+                
+                <div class="input-field col s4">          
+                    <label for="horarioDeInicio">Horario De Inicio</label><br/>
+                    <p id="horarioDeInicio">{{rotaSelecionada.cronograma.horarioDeInicio}}</p>
+                </div>
+                <div class="input-field col s4">          
+                    <label for="horarioDeTermino">Horario De Termino</label><br/>
+                    <p id="horarioDeTermino">{{rotaSelecionada.cronograma.horarioDeTermino}}</p>
+                </div>
+			</div> 
+        </div>  
+
+        <div class="map" id="mapVisualizarRota"></div>     
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</button>
+    </div>    
+</div>
+
+<!-- EDITAR ROTA -->
+<div id="modalEditarRota" class="modal modal-fixed-footer modal-veiculo">
+	<form ng-submit="confirmarEdicaoDeRota()">
+		<div class="modal-content">
+			<nav class="center">
+				<h5 class="brand-logo center">Editar Rota</h5>
+			</nav>
+			<div class="row">        				
+				<div class="input-field col s12">
+					<input id="descricaoEdicao" type="text" class="validate" ng-model="rotaSelecionada.descricao" required></input>
+					<label for="descricaoEdicao">Descrição</label>
+				</div>
+
+				<div class="input-field col s6">
+					<select id="motoristasEdicao" class="validate" ng-model="rotaSelecionada.motorista" ng-options="motorista as motorista.nome for motorista in motoristas track by motorista.id" required>
+						<option value="" disabled="" selected="">Selecione uma opção</option>						
+					</select>
+					<label for="motoristasEdicao">Motorista</label>                                        
+				</div>
+
+				<div class="input-field col s6">
+					<select id="veiculosEdicao" class="validate" ng-model="rotaSelecionada.veiculo" ng-options="veiculo as veiculo.descricao for veiculo in veiculos track by veiculo.id" required>
+						<option value="" disabled="" selected="">Selecione uma opção</option>
+					</select>
+					<label for="veiculosEdicao">Veiculo</label>                                        
+				</div>
+
+				<div class="input-field col s6">
+					<select id="diaDaSemanaEdicao" class="validate" ng-model="rotaSelecionada.cronograma.diaDaSemana" required>
+						<option value="" disabled="" selected="">Selecione uma opção</option>
+						<option ng-repeat="diaDaSemana in diasDaSemana" value="{{diaDaSemana.$}}">{{diaDaSemana.$}}</option>
+					</select>
+					<label for="diaDaSemanaEdicao">Dia da Semana</label>                                        
+				</div>
+
+				<div class="input-field col s6">
+					<select id="turnoEdicao" class="validate" ng-model="rotaSelecionada.cronograma.turno" required>
+						<option value="" disabled="" selected="">Selecione uma opção</option>
+						<option ng-repeat="turno in turnos" value="{{turno.$}}">{{turno.$}}</option>
+					</select>
+					<label for="turnoEdicao">Turno</label>                                        
+				</div>
+
+				<div class="input-field col s6">
+					<input id="horarioDeInicio" type="text" class="validate" ng-model="rotaSelecionada.cronograma.horarioDeInicio" ui-hora required></input>
+					<label for="horarioDeInicio">Horario de Inicio</label>
+				</div>
+
+				<div class="input-field col s6">
+					<input id="horarioDeTermino" type="text" class="validate" ng-model="rotaSelecionada.cronograma.horarioDeTermino" ui-hora required></input>
+					<label for="horarioDeTermino">Horario de Termino</label>
+				</div>
+			</div> 
+
+			<div class="map" id="mapEditarRota"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="waves-effect waves-green btn-flat" type="submit">Editar</button>      
+			<button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Cancelar</button>
+		</div>
+	</form>    
+</div>
+
+<!-- CONFIRMAÇÂO ATUALIZAÇÂO DE ROTA -->
+<div id="modalConfirmacaoEdicaoDeRota" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente atualizar essa rota?</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="editarRota()" class="waves-effect waves-green btn-flat">Confirmar</button>
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>
+
+<!-- CONFIRMAÇÂO EXCLUSÂO DE ROTA -->
+<div id="modalConfirmacaoExclusaoDeRota" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente excluir essa rota, caso exclua o mesmo será inativado!</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="excluirRota()" class="waves-effect waves-green btn-flat">Confirmar</button>
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>
+
+<!-- CONFIRMAÇÂO ATIVAÇÂO DE ROTA -->
+<div id="modalConfirmacaoAtivacaoDeRota" class="modal bottom-sheet">
+    <div class="modal-content modal-confirmacao">
+        <h5>Confirmar operação</h5>
+        <p>Deseja realmente excluir essa rota, caso exclua o mesmo será inativado!</p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="ativarRota()" class="waves-effect waves-green btn-flat">Confirmar</button>
+        <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+    </div>
+</div>

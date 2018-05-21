@@ -1,0 +1,41 @@
+<nav class="teal lighten-2">
+	<ul id="slide-out" class="side-nav fixed">
+   <li>
+    <div class="userView teal lighten-2" align="center">      			
+     <a href=""><img class="circle" src="img/avatar.png"></img></a>
+     <a href=""><span class="white-text name">Usuario Desenvolvedor</span></a>
+     <a href=""><span class="white-text email">Desenvolvedor@email.com</span></a>
+   </div>
+ </li>            	
+ <li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">Inicio<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="inicio()"><i class="material-icons">home</i>Inicio</a></li>                
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Gerenciar<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="gerenciarGestores()"><i class="material-icons">people</i>Gestores</a></li>          
+        </ul>
+      </div>
+    </li>              
+    <li>
+      <a class="collapsible-header">Ações<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="gerenciarTrocarSenha()"><i class="material-icons">lock_outline</i>Trocar senha</a></li>
+          <li><a ng-click="logout()"><i class="material-icons">power_settings_new</i>Sair</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>               
+</ul>
+<a href="" data-activates="slide-out" class="button-collapse a-white"><i class="material-icons">menu</i></a>    
+</nav>

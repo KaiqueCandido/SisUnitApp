@@ -1,0 +1,52 @@
+<nav class="teal lighten-2">
+	<ul id="slide-out" class="side-nav fixed">
+   <li>
+    <div class="userView teal lighten-2" align="center">      			
+     <a href=""><img class="circle" src="img/avatar.png"></img></a>
+     <a href=""><span class="white-text name">Usuario Gestor</span></a>
+     <a href=""><span class="white-text email">gestor@email.com</span></a>
+   </div>
+ </li>            	
+ <li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">Inicio<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="homeGestor()"><i class="material-icons">home</i>Inicio</a></li>                
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Gerenciar<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="gerenciarVeiculos()"><i class="material-icons">airport_shuttle</i>Veiculos</a></li>
+          <li><a ng-click="gerenciarMotoristas()"><i class="material-icons">airline_seat_recline_normal</i>Motoristas</a></li>
+          <li><a ng-click="gerenciarPontosDeParada()"><i class="material-icons">location_on</i>Pontos de Parada</a></li>
+          <li><a ng-click="gerenciarRotas()"><i class="material-icons">map</i>Rotas</a></li>
+          <li><a ng-click="gerenciarPassageiros()"><i class="material-icons">people</i>Passageiros</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Relatorios<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>          
+        </ul>
+      </div>
+    </li>      
+    <li>
+      <a class="collapsible-header">Ações<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="gerenciarTrocarSenha()"><i class="material-icons">lock_outline</i>Trocar senha</a></li>
+          <li><a ng-click="sair()"><i class="material-icons">power_settings_new</i>Sair</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>               
+</ul>
+<a href="" data-activates="slide-out" class="button-collapse a-white"><i class="material-icons">menu</i></a>    
+</nav>

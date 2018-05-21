@@ -1,0 +1,38 @@
+<main>
+	<div class="card">	
+		<div class="card-content">				
+			<span class="card-title center">Trocar senha</span>	
+			<div class="row">
+				<form class="col s12">						
+					<div class="input-field col s12">                
+						<input ng-model="senhaAntiga" type="password" id="senhaAntiga" class="validate" required="" aria-required="true"></input>
+						<label for="senhaAntiga">Senha antiga</label>
+					</div>	
+					<div class="input-field col s12">                
+						<input ng-model="novaSenha" type="password" id="novaSenha" class="validate" required="" aria-required="true"></input>
+						<label for="novaSenha">Nova senha</label>
+					</div>	
+					<div class="input-field col s12">                
+						<input ng-model="confirmarNovaSenha" type="password" id="confirmarNovaSenha" class="validate" required="" aria-required="true"></input>
+						<label for="confirmarNovaSenha">Confirmar nova senha</label>
+					</div>												
+					<div class="col s12">                
+						<a ng-click="cancelarAlteracaoDeSenhaAluno()" class="waves-effect waves-light btn red white-text">Cancelar</a>																
+						<button  ng-click="alterarSenhaAluno(senhaAntiga, novaSenha, confirmarNovaSenha)" class="waves-effect waves-light btn green white-text right" type="submit" name="action">Salvar</button>
+					</div>							
+				</form>											
+			</div>			
+		</div>
+	</div>
+</main>
+
+<div id="modalConfirmacaTrocaSenha" class="modal">
+	<div class="modal-content">
+		<h4>Alterar Senha</h4>
+		<p>Deseja realmente alterar sua senha ?</p>
+	</div>
+	<div class="modal-footer">
+		<a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirmar</a>
+		<a href="" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancelar</a>
+	</div>
+</div>

@@ -1,0 +1,553 @@
+<main>
+    <div class="row">
+        <div class="card">                            
+            <div class="card-content">                
+                <span class="card-title center">Gerenciamento de Motoristas</span>         
+
+                <div class="row">
+                    <div class="col">
+                        <a data-target="modalNovoMotorista" ng-click="prepararDados()" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Novo Motorista"><i class="material-icons">add</i></a>
+                    </div>    
+                    <div class="col">                    
+                        <a data-target="modalVisualizacaoMotorista" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes do Motorista"><i class="material-icons">search</i></a>
+                    </div>    
+                    <div class="col">
+                        <a data-target="modalEditarMotorista" ng-click="prepararDados()" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Motorista"><i class="material-icons">edit</i></a>
+                    </div>    
+                    <div class="col">
+                        <a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeMotorista" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Motorista"><i class="material-icons">delete</i></a>
+                    </div>
+                    <div class="col">
+                        <a ng-hide="motoristaSelecionadoInativo" data-target="modalConfirmacaoAtivacaoDeMotorista" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Motorista"><i class="material-icons">check_box</i></a>
+                    </div>        
+                    <div class="col m9">
+                        <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual o motorista que você está buscando?"></input>
+                    </div>                
+                </div>         
+
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>                                        
+                            <th>Nome</th>                            
+                            <th>CNH</th>                            
+                            <th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th> 
+                        </tr>
+                    </thead>        
+                    <tbody>
+                        <tr ng-click="selecionaMotorista(motorista)" ng-repeat="motorista in motoristas | filter:{nome:criterioDeBusca} | filter:{conta: {statusDoCadastro:statusDasEntidades}}:true | orderBy:'nome'">
+                            <td ng-style="{'background-color': motorista.selecionado}">{{motorista.nome + ' ' + motorista.sobrenome}}</td>
+                            <td ng-style="{'background-color': motorista.selecionado}">{{motorista.codCnh}}</td>
+                            <td ng-style="{'background-color': motorista.selecionado}">{{motorista.conta.statusDoCadastro}}</td>
+                        </tr>          
+                    </tbody>
+                </table>            
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- CADASTRO DE MOTORISTA -->
+<div id="modalNovoMotorista" class="modal modal-fixed-footer modal-veiculo">
+    <form ng-submit="salvarMotorista()">
+        <div class="modal-content">
+            <nav class="center">
+                <h5 class="brand-logo center">Novo Motorista</h5>
+            </nav>
+            <div class="row">        
+                <div class="row">      
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-blue">
+                            <li class="tab" ><a class="active" href="#dadosgerais">Dados Gerais</a></li>
+                            <li class="tab"><a href="#documentos">Documentos Pessoais</a></li>
+                            <li class="tab"><a href="#endereco">Endereço</a></li>
+                            <li class="tab"><a href="#contato">Contato</a></li>                            
+                            <li class="tab"><a href="#dadosconta">Dados da Conta</a></li>    
+                        </ul>
+                    </div>
+                    
+                    <div id="dadosgerais">
+                        <div class="input-field col s6">
+                            <input id="nome" type="text" class="validate" ng-model="motorista.nome"  required maxlength="150"></input>
+                            <label for="nome">Nome</label>                            
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="sobrenome" type="text" class="validate" ng-model="motorista.sobrenome"  required maxlength="150"></input>
+                            <label for="sobrenome">Sobrenome</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeNascimento" type="text" class="validate" ng-model="motorista.dataDeNascimento" required ui-date></input>
+                            <label for="dataDeNascimento">Data de Nascimento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="sexo" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione um sexo</option>
+                                <option ng-repeat="sexo in sexos" value="{{sexo.$}}">{{sexo.$ | sexoFilter}}</option>
+                            </select>
+                            <label for="sexo">Sexo</label>                                        
+                        </div>                               
+                    </div>
+
+                    <div id="documentos">
+                        <div class="input-field col s6">
+                            <input id="rg" type="text" class="validate" ng-model="motorista.documentosPessoais.rg" ng-blur="validateCadastroRg(motorista.documentosPessoais.rg)" required maxlength="30"></input>
+                            <label for="rg">RG</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="orgaoEmissaoRg" type="text" class="validate" ng-model="motorista.documentosPessoais.orgaoEmissaoRg" required maxlength="30"></input>
+                            <label for="orgaoEmissaoRg">Orgão Emissor</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="estado" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione um estado</option>
+                                <option ng-repeat="estado in estados" value="{{estado}}">{{estado.uf}}</option>
+                            </select>
+                            <label for="estado">Estado de Emissão</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeEmissaoDoRg" type="text" class="validate" ng-model="motorista.documentosPessoais.dataDeEmissaoDoRg" required ui-date></input>
+                            <label for="dataDeEmissaoDoRg">Data de Emissão</label>                            
+                        </div>                    
+
+                        <div class="input-field col s6">
+                            <input id="cpf" type="text" class="validate" ng-model="motorista.documentosPessoais.cpf" ng-blur="validateCadastroCpf(motorista.documentosPessoais.cpf)" required ui-cpf></input>
+                            <label for="cpf">CPF</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cnh" type="text" class="validate" ng-model="motorista.codCnh" required></input>
+                            <label for="cnh">Número CNH</label>
+                        </div>
+                    </div>   
+
+                    <div id="endereco">
+                        <div class="input-field col s6">
+                            <input id="logradouro" type="text" class="validate" ng-model="motorista.endereco.logradouro"></input>
+                            <label for="logradouro">Logradouro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="numero" type="text" class="validate" ng-model="motorista.endereco.numero"></input>
+                            <label for="numero">Número</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="bairro" type="text" class="validate" ng-model="motorista.endereco.bairro"></input>
+                            <label for="bairro">Bairro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="tipoDeZona" class="validate" required>
+                                <option value="" disabled="" selected="">Selecione o Tipo de Zona</option>
+                                <option ng-repeat="tipoDeZona in tiposDeZona" value="{{tipoDeZona.$}}">{{tipoDeZona.$ | tipoDeZonaFilter}}</option>
+                            </select>
+                            <label for="tipoDeZona">Tipo de Zona</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="complemento" type="text" class="validate" ng-model="motorista.endereco.complemento"></input>
+                            <label for="complemento">Complemento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cep" type="text" class="validate" ng-model="motorista.endereco.cep" ng-blur="pesquisaEstadoECidade(motorista.endereco.cep)" ui-cep></input>
+                            <label for="cep">CEP</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="estado" type="text" ng-model="motorista.endereco.estado.uf" readonly></input>
+                            <label class="active" for="estado">Estado</label>
+                        </div> 
+
+                        <div class="input-field col s6">
+                            <input id="municipio" type="text" ng-model="motorista.endereco.cidade.nome" readonly></input> 
+                            <label class="active" for="municipio">Município</label>
+                        </div>
+                    </div>
+
+                    <div id="contato">
+                        <div class="input-field col s6">
+                            <input id="telefoneFixo" type="text" class="validate" ng-model="motorista.contato.telefoneFixo" ui-telefone></input>
+                            <label for="telefoneFixo">Telefone Fixo</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="telefoneCelular" type="text" class="validate" ng-model="motorista.contato.telefoneCelular" required ui-telefone></input>
+                            <label for="telefoneCelular">Telefone Celular</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="email" type="email" class="validate" ng-model="motorista.contato.email" ng-blur="validateCadastroEmail(motorista.contato.email)" required></input>
+                            <label for="email">E-mail</label>                            
+                        </div>
+                    </div>
+
+                    <div id="dadosconta">
+                        <div class="input-field col s6">
+                            <input id="login" type="text" class="validate" ng-model="motorista.conta.login" ng-blur="validateCadastroLogin(motorista.conta.login)" required></input>
+                            <label for="login">Login</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="senha" type="password" class="validate" ng-model="motorista.conta.senha" required></input>
+                            <label for="senha">Senha</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="confirmarSenha" type="password" class="validate" ng-model="motorista.conta.confirmarSenha" required></input>
+                            <label for="confirmarSenha">Confirmar Senha</label>
+                        </div>                        
+                    </div>
+                </div>            
+            </div>       
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+            <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+        </div>
+    </form>    
+</div>
+
+<!-- VISUALIZAR DETALHES DO VEICULO -->
+<div id="modalVisualizacaoMotorista" class="modal modal-fixed-footer modal-motorista">
+
+    <div class="modal-content">
+        <nav class="center">
+            <h5 class="brand-logo center">Detalhes do Motorista</h5>
+        </nav>
+        <div class="row">        
+            <div class="row">                    
+                <div class="input-field col s12">          
+                    <h5>Dados Gerais</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="nome">Nome</label><br/>
+                    <p id="nome">{{motoristaSelecionado.nome + ' ' + motoristaSelecionado.sobrenome}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="dataDeNascimento">Data de Nascimento</label><br/>
+                    <p id="sobrenome">{{motoristaSelecionado.dataDeNascimento | date:'dd/MM/yyyy'}}</p>
+                </div>                                            
+
+                <div class="input-field col s4">          
+                    <label for="sexo">Sexo</label><br/>
+                    <p id="sexo">{{motoristaSelecionado.sexo | sexoFilter}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Documentos Pessoais</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="rg">RG</label><br/>
+                    <p id="rg">{{motoristaSelecionado.documentosPessoais.rg}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="orgaoEmissaoRg">Orgão Emissor</label><br/>
+                    <p id="orgaoEmissaoRg">{{motoristaSelecionado.documentosPessoais.orgaoEmissaoRg}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="estado">Estado de Emissão</label><br/>
+                    <p id="estado">{{motoristaSelecionado.documentosPessoais.estadoDeEmissaoDoRg.uf}}</p>
+                </div>                
+
+                <div class="input-field col s4">          
+                    <label for="dataDeEmissaoDoRg">Data de Emissão</label><br/>
+                    <p id="dataDeEmissaoDoRg">{{motoristaSelecionado.documentosPessoais.dataDeEmissaoDoRg | date:'dd/MM/yyyy'}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cpf">CPF</label><br/>
+                    <p id="cpf">{{motoristaSelecionado.documentosPessoais.cpf | cpfFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cnh">CNH</label><br/>
+                    <p id="cnh">{{motoristaSelecionado.codCnh}}</p>
+                </div>
+                
+                <div class="input-field col s12">          
+                    <h5>Endereço</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="logradouro">Logradouro</label><br/>
+                    <p id="logradouro">{{motoristaSelecionado.endereco.logradouro}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="numero">Número</label><br/>
+                    <p id="numero">{{motoristaSelecionado.endereco.numero}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="bairro">Bairro</label><br/>
+                    <p id="bairro">{{motoristaSelecionado.endereco.bairro}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="tipoDeZona">Zona</label><br/>
+                    <p id="tipoDeZona">{{motoristaSelecionado.endereco.tipoDeZona | tipoDeZonaFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="complemento">Complemento</label><br/>
+                    <p id="complemento">{{motoristaSelecionado.endereco.complemento}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="cep">CEP</label><br/>
+                    <p id="cep">{{motoristaSelecionado.endereco.cep | cepFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="estado">Estado</label><br/>
+                    <p id="estado">{{motoristaSelecionado.endereco.estado.nome}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="municipio">Municipio</label><br/>
+                    <p id="municipio">{{motoristaSelecionado.endereco.cidade.nome}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Contato</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="telefoneFixo">Telefone Fixo</label><br/>
+                    <p id="telefoneFixo">{{motoristaSelecionado.contato.telefoneFixo | telefoneFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="telefoneCelular">Telefone Celular</label><br/>
+                    <p id="telefoneCelular">{{motoristaSelecionado.contato.telefoneCelular | telefoneFilter}}</p>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="email">E-mail</label><br/>
+                    <p id="email">{{motoristaSelecionado.contato.email}}</p>
+                </div>
+
+                <div class="input-field col s12">          
+                    <h5>Dados da Conta</h5>
+                </div>
+
+                <div class="input-field col s4">          
+                    <label for="login">Login</label><br/>
+                    <p id="login">{{motoristaSelecionado.conta.login}}</p>
+                </div>                
+            </div>            
+        </div>       
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</button>
+    </div>    
+</div>
+
+<!-- EDITAR DE MOTORISTA -->
+<div id="modalEditarMotorista" class="modal modal-fixed-footer modal-veiculo">
+    <form ng-submit="confirmarAtualizacaoDeMotorista()">
+        <div class="modal-content">
+            <nav class="center">
+                <h5 class="brand-logo center">Editar Motorista</h5>
+            </nav>
+            <div class="row">        
+                <div class="row">      
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-blue">
+                            <li class="tab" ><a class="active" href="#editardadosgerais">Dados Gerais</a></li>
+                            <li class="tab"><a href="#editardocumentos">Documentos Pessoais</a></li>
+                            <li class="tab"><a href="#editarendereco">Endereço</a></li>
+                            <li class="tab"><a href="#editarcontato">Contato</a></li>                            
+                            <li class="tab"><a href="#editardadosconta">Dados da Conta</a></li>    
+                        </ul>
+                    </div>
+                    
+                    <div id="editardadosgerais">
+                        <div class="input-field col s6">
+                            <input id="nome" type="text" class="validate" ng-model="motoristaSelecionado.nome"  required maxlength="150"></input>
+                            <label for="nome">Nome</label>                            
+                        </div>
+                        
+                        <div class="input-field col s6">
+                            <input id="sobrenome" type="text" class="validate" ng-model="motoristaSelecionado.sobrenome"  required maxlength="150"></input>
+                            <label for="sobrenome">Sobrenome</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeNascimento" type="text" class="validate" ng-model="motoristaSelecionado.dataDeNascimento" required ui-date></input>
+                            <label for="dataDeNascimento">Data de Nascimento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="sexo" class="validate" ng-model="motoristaSelecionado.sexo" required>
+                                <option value="" disabled="" selected="">Selecione um sexo</option>
+                                <option ng-repeat="sexo in sexos" value="{{sexo.$}}">{{sexo.$ | sexoFilter}}</option>
+                            </select>
+                            <label for="sexo">Sexo</label>                                        
+                        </div>                               
+                    </div>
+
+                    <div id="editardocumentos">
+                        <div class="input-field col s6">
+                            <input id="rg" type="text" class="validate" ng-model="motoristaSelecionado.documentosPessoais.rg" ng-blur="validateEdicaoRg(motoristaSelecionado.documentosPessoais.rg)" required maxlength="30"></input>
+                            <label for="rg">RG</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="orgaoEmissaoRg" type="text" class="validate" ng-model="motoristaSelecionado.documentosPessoais.orgaoEmissaoRg" required maxlength="30"></input>
+                            <label for="orgaoEmissaoRg">Orgão Emissor</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="estado" class="validate" ng-model="motoristaSelecionado.documentosPessoais.estadoDeEmissaoDoRg.uf" required>
+                                <option value="" disabled="" selected="">Selecione um estado</option>
+                                <option ng-repeat="estado in estados" value="{{estado.uf}}">{{estado.uf}}</option>
+                            </select>
+                            <label for="estado">Estado de Emissão</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="dataDeEmissaoDoRg" type="text" class="validate" ng-model="motoristaSelecionado.documentosPessoais.dataDeEmissaoDoRg" required ui-date></input>
+                            <label for="dataDeEmissaoDoRg">Data de Emissão</label>                            
+                        </div>                    
+
+                        <div class="input-field col s6">
+                            <input id="cpf" type="text" class="validate" ng-model="motoristaSelecionado.documentosPessoais.cpf" ng-blur="validateEdicaoCpf(motoristaSelecionado.documentosPessoais.cpf)" required ui-cpf></input>
+                            <label for="cpf">CPF</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cnh" type="text" class="validate" ng-model="motoristaSelecionado.codCnh" required></input>
+                            <label for="cnh">Número CNH</label>
+                        </div>
+                    </div>   
+
+                    <div id="editarendereco">
+                        <div class="input-field col s6">
+                            <input id="logradouro" type="text" class="validate" ng-model="motoristaSelecionado.endereco.logradouro"></input>
+                            <label for="logradouro">Logradouro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="numero" type="text" class="validate" ng-model="motoristaSelecionado.endereco.numero"></input>
+                            <label for="numero">Número</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="bairro" type="text" class="validate" ng-model="motoristaSelecionado.endereco.bairro"></input>
+                            <label for="bairro">Bairro</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select id="tipoDeZona" class="validate" ng-model="motoristaSelecionado.endereco.tipoDeZona" required>
+                                <option value="" disabled="" selected="">Selecione o Tipo de Zona</option>
+                                <option ng-repeat="tipoDeZona in tiposDeZona" value="{{tipoDeZona.$}}">{{tipoDeZona.$}}</option>
+                            </select>
+                            <label for="tipoDeZona">Tipo de Zona</label>                                        
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="complemento" type="text" class="validate" ng-model="motoristaSelecionado.endereco.complemento"></input>
+                            <label for="complemento">Complemento</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="cep" type="text" class="validate" ng-model="motoristaSelecionado.endereco.cep" ng-blur="pesquisaEstadoECidade(motoristaSelecionado.endereco.cep)"></input>
+                            <label for="cep">CEP</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="estado" type="text" ng-model="motoristaSelecionado.endereco.estado.uf" readonly></input>
+                            <label class="active" for="estado">Estado</label>
+                        </div> 
+
+                        <div class="input-field col s6">
+                            <input id="municipio" type="text" ng-model="motoristaSelecionado.endereco.cidade.nome" readonly></input> 
+                            <label class="active" for="municipio">Município</label>
+                        </div>
+                    </div>
+
+                    <div id="editarcontato">
+                        <div class="input-field col s6">
+                            <input id="telefoneFixo" type="text" class="validate" ng-model="motoristaSelecionado.contato.telefoneFixo"></input>
+                            <label for="telefoneFixo">Telefone Fixo</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="telefoneCelular" type="text" class="validate" ng-model="motoristaSelecionado.contato.telefoneCelular" required></input>
+                            <label for="telefoneCelular">Telefone Celular</label>                            
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="email" type="email" class="validate" ng-model="motoristaSelecionado.contato.email" ng-blur="validateEdicaoEmail(motoristaSelecionado.contato.email)" required></input>
+                            <label for="email">E-mail</label>                            
+                        </div>
+                    </div>
+
+                    <div id="editardadosconta">
+                        <div class="input-field col s6">
+                            <input id="login" type="text" class="validate" ng-model="motoristaSelecionado.conta.login" ng-blur="validateEdicaoLogin(motoristaSelecionado.conta.login)" required></input>
+                            <label for="login">Login</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="senha" type="password" class="validate" ng-model="motoristaSelecionado.conta.senha" required></input>
+                            <label for="senha">Senha</label>
+                        </div>                                                
+                    </div>
+                </div>            
+            </div>       
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit">Atualizar</button>      
+            <button class="modal-action modal-close waves-effect waves-red btn-flat left" type="reset">Cancelar</button>
+        </div>
+    </form>    
+</div>
+
+<!-- CONFIRMAÇÂO DE EDIÇÂO DE MOTORISTA -->
+<div id="modalConfirmacaoEdicaoDeMotorista" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente editar esse motorista?</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="editarMotorista()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
+<!-- CONFIRMAÇÂO DE EXCLUSÃO DE MOTORISTA -->
+<div id="modalConfirmacaoExclusaoDeMotorista" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente excluir esse motorista, caso exclua o mesmo será inativado!</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="inativarMotorista()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
+<!-- CONFIRMAÇÂO DE EXCLUSÃO DE MOTORISTA -->
+<div id="modalConfirmacaoAtivacaoDeMotorista" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente ativar esse motorista?</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="ativarMotorista()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>

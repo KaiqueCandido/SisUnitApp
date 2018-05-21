@@ -1,0 +1,112 @@
+<main>    
+	<div class="row">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title center">Gerenciamento de Gestores</span>
+
+				<div class="row">
+					<div class="col">
+						<a data-target="modalNovoGestor" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Novo Gestor"><i class="material-icons">add</i></a>
+					</div>
+					<div class="col">
+						<a data-target="modalVisualizacaoGestor" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes do Gestor"><i class="material-icons">search</i></a>
+					</div>    
+					<div class="col">
+						<a data-target="modalEditarGestor" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Gestor"><i class="material-icons">edit</i></a>
+					</div>    
+					<div class="col">
+						<a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeGestor" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Gestor"><i class="material-icons">delete</i></a>
+					</div>
+					<div class="col">
+						<a ng-hide="gestorSelecionadoInativo" data-target="modalConfirmacaoAtivacaoDeGestor" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Gestor"><i class="material-icons">check_box</i></a>
+					</div>    
+					<div class="col m8">
+						<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual o gestor que você está buscando?"></input>
+					</div>                
+				</div>    
+
+				<table class="highlight responsive-table">
+					<thead>
+						<tr>                                        						
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>E-mail</th>
+							<th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th>
+						</tr>
+					</thead>        
+					<tbody>
+						<tr ng-click="selecionaGestor(gestor)" ng-repeat="gestor in gestores | filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
+							<td ng-style="{'background-color': gestor.selecionado}">{{gestor.nome}}</td>
+							<td ng-style="{'background-color': gestor.selecionado}">{{gestor.contato.telefoneCelular}}</td>
+							<td ng-style="{'background-color': gestor.selecionado}">{{gestor.contato.email}}</td>
+							<td ng-style="{'background-color': gestor.selecionado}">{{gestor.statusDoCadastro}}</td>
+						</tr>          
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</main>
+
+<div id="modalNovoGestor" class="modal modal-fixed-footer">
+	<form ng-submit="salvarGestor(gestor)">
+		<div class="modal-content">
+			<nav class="center">
+				<h5 class="brand-logo center">Novo Gestor</h5>            
+			</nav>
+			<div class="row">        
+				<div class="row">               
+					<div class="input-field col s6">
+						<input id="nome" type="text" class="validate" ng-model="gestor.nome" maxlength="100" required></input>
+						<label for="nome">Nome</label>
+					</div>                              
+					<div class="input-field col s6">
+						<input id="sobreNome" type="text" class="validate" ng-model="gestor.sobreNome" maxlength="10" required></input>
+						<label for="sobreNome">Sobre Nome</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="dataDeNascimento" type="text" class="datepicker" ng-model="gestor.dataDeNascimento"></input>
+						<label for="dataDeNascimento">Data de nascimento</label>
+					</div>
+
+
+
+
+
+
+					<div class="input-field col s12">
+						<label for="cargaHoraria">Carga Horaria</label><br/>
+						<p class="range-field">
+							<input type="range" id="cargaHoraria" min="0" max="500" ng-model="disciplina.cargaHoraria"/>
+						</p>
+					</div>                                                                      
+					<div class="col s12">
+						<div class="switch">
+							<label for="possuiPreRequisitos">Possui disciplinas que sejam pré-requisito?</label><br/>
+							<label>
+								Não
+								<input id="possuiPreRequisitos" type="checkbox" ng-model="possuiPreRequisitos">
+								<span class="lever"></span>
+								Sim
+							</label><br/><br/>
+						</div>
+					</div>        
+					<div ng-show="possuiPreRequisitos">
+						<div class="col s12"><span>Selecione a(s) disciplina(s) que sejam pré-requisito(s)</span></div>
+						<div ng-repeat="disciplina in disciplinas" class="col s12">          
+							<p>
+								<input ng-model="disciplina.selected" type="checkbox" id="{{disciplina.id}}"/>
+								<label for="{{disciplina.id}}">{{disciplina.nome}}</label>
+							</p>
+						</div>
+					</div>        
+				</div>            
+			</div>       
+		</div>
+		<div class="modal-footer">
+			<button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+			<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>      
+		</div>    
+	</form>
+</div>

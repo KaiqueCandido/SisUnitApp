@@ -1,0 +1,65 @@
+  <div class="login">       
+	<div align="center">
+    <img class="ionImageLogo" src="./img/logo-min.png" />
+  </div>
+  <div class="login-container container">        
+    <div class="row login-form">
+      <form class="col s12">      
+        <div class="row login-input-container">
+
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="icon_prefix" type="email" class="validate" ng-model="login.login"></input>
+            <label for="icon_prefix">Login</label>
+          </div>          
+
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="icon_prefix" type="password" class="validate" ng-model="login.senha"></input>
+            <label for="icon_prefix">Senha</label>
+          </div>
+        </div>
+
+        <button class="waves-effect waves-light btn btn-page-login" type="submit" ng-click="autenticacao(login)">
+          <i class="material-icons right">send</i>Gestor
+        </button>
+
+        <button class="waves-effect waves-light btn btn-page-login" type="submit" ng-click="loginMotorista()">
+          <i class="material-icons right">send</i>Motorista
+        </button>
+
+        <button class="waves-effect waves-light btn btn-page-login" type="submit" ng-click="loginPassageiro()">
+          <i class="material-icons right">send</i>Passageiro
+        </button> 
+
+      </form>  
+    </div>
+
+    <div class="login-footer row">      
+
+      <a href="" class="waves-effect waves-light col s6 offset-s6 a-white">
+        <i class="material-icons right">lock_open</i> Esqueci minha senha
+      </a>
+
+      <hr width="100%" class="seperator-dashed col s12 "></hr>
+
+      <div class="row row-login">
+        <a class="col m4 waves-effect waves-light a-white" href="">
+          <p class="material-icons">insert_drive_file</p>
+          <p>Manuais</p>          
+        </a>
+
+        <a class="col m4 waves-effect waves-light a-white" href="">
+          <p class="material-icons">comment</p>
+          <p>Sugestões</p>          
+        </a>
+
+        <a class="col m4 waves-effect waves-light a-white" href="" ng-click="goAreRestrita()">
+          <p class="material-icons">lock</p>
+          <p>Área restrita</p>
+        </a>        
+
+      </div>
+    </div>
+  </div>     
+</div>

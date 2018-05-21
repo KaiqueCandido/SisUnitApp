@@ -1,0 +1,73 @@
+html {
+	position: relative;
+    min-height: 100%;	
+}
+
+body {
+    min-height: 100%;	
+    margin: 0 0 60px !important;
+}
+
+main{
+	margin-top: 10px !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+}
+
+nav {
+	background-color: #004d40 !important;
+}
+
+a {
+	color: #004d40 !important;
+}
+
+.a-white {
+	color: #fff !important;
+}
+
+.a-grey {
+	color: grey !important;
+}
+
+.print {
+	color: black !important;
+}
+
+.teal.lighten-2 {
+	background-color: #004d40 !important;
+}
+
+.card-avisos {
+	background-color: #004d40  !important;
+}
+
+.selecionado{
+	background-color: grey;
+}
+
+td{
+	border-radius: 0px !important;
+}
+
+.tabs .indicator {
+    background-color: #4db6ac;
+}
+
+.subsecao{
+	color: #4db6ac;
+}
+
+/*Mantém a tabela vazia no formato certo*/
+table.responsive-table{
+	display: inline-table;
+}
+
+.brand-logo {
+	color: White !important;
+	font-size: 1.8rem !important;
+}
+
+.font-size-card-route {
+	font-size: 1.2rem !important;
+}
