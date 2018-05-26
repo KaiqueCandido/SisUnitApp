@@ -50,6 +50,21 @@
             }
           ]
         }
+      },
+      "res/values/strings.xml": {
+        "parents": {
+          "/resources": []
+        }
+      },
+      "res/xml/authenticator.xml": {
+        "parents": {
+          "/*": []
+        }
+      },
+      "res/xml/syncadapter.xml": {
+        "parents": {
+          "/*": []
+        }
       }
     }
   },

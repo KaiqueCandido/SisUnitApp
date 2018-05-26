@@ -22,31 +22,7 @@ var appDeviceReady = {
         permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION, function (response) {
         });
         permissions.requestPermission(permissions.INTERNET, function (response) {
-        });        
-    },
-   
-    onPause: function (){
-        alert('onPause');
-    },
-
-    onResume: function (){
-        alert('onResume');
-    },
-
-    onMenuKeyDown: function (){
-        alert('onMenuKeyDown');
-    },
-
-    onBackKeyDown: function () {
-        alert('onBackKeyDown');
-    },
-
-    onVolumeDownKeyDown: function () {
-        alert('onVolumeDownKeyDown');
-    },
-
-    onVolumeUpKeyDown: function () {
-        alert('onVolumeUpKeyDown');
+        });           
     }
 
 };

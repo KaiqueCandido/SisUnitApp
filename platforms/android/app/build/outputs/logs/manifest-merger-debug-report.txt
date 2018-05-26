@@ -1,13 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\04f7c2a0cf937ddf419a595948889b06\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\a8db7c23cfc114acabdf0112129803ed\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:17:1-27:12
 MERGED from [:CordovaLib] C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:20:1-27:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-20:12
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\018ebe26f166559df0a6944a140d3ddb\AndroidManifest.xml:2:1-6:12
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\3e42ef0ed581e893bd888f99e4596c66\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\5323df9a1b178587acab200b0b798599\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\b6422ffe0d08b22b312960e008bd2574\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\48bbace8baace1ac814b09f117783930\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\56571da1777e76e2bb7911d48d053547\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\52120eef3e5378a3c21803190cac19df\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\7633a6e12b06248fc8a1338fbe36456c\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\5635649dc8ce73d6ee8fb7502c6bf08a\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:2:102-126
 		INJECTED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml
@@ -43,7 +57,35 @@ ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\A
 	android:name
 		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:4:22-64
 application
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:5:5-13:19
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:5:5-33:19
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\04f7c2a0cf937ddf419a595948889b06\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\04f7c2a0cf937ddf419a595948889b06\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\a8db7c23cfc114acabdf0112129803ed\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\a8db7c23cfc114acabdf0112129803ed\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\018ebe26f166559df0a6944a140d3ddb\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\018ebe26f166559df0a6944a140d3ddb\AndroidManifest.xml:5:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\3e42ef0ed581e893bd888f99e4596c66\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\3e42ef0ed581e893bd888f99e4596c66\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\5323df9a1b178587acab200b0b798599\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\5323df9a1b178587acab200b0b798599\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\b6422ffe0d08b22b312960e008bd2574\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\b6422ffe0d08b22b312960e008bd2574\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\48bbace8baace1ac814b09f117783930\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\48bbace8baace1ac814b09f117783930\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\56571da1777e76e2bb7911d48d053547\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\56571da1777e76e2bb7911d48d053547\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\52120eef3e5378a3c21803190cac19df\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\52120eef3e5378a3c21803190cac19df\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\7633a6e12b06248fc8a1338fbe36456c\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\7633a6e12b06248fc8a1338fbe36456c\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\5635649dc8ce73d6ee8fb7502c6bf08a\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\5635649dc8ce73d6ee8fb7502c6bf08a\AndroidManifest.xml:5:5-20
 	android:supportsRtl
 		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:5:114-140
 	android:label
@@ -82,31 +124,177 @@ service#de.appplant.cordova.plugin.background.ForegroundService
 ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:12:9-91
 	android:name
 		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:12:18-88
+meta-data#com.google.android.gms.version
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:13:9-122
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:13:66-119
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:13:20-65
+service#com.marianhello.bgloc.sync.SyncService
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:9-19:19
+	android:process
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:96-119
+	android:exported
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:18-41
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:42-95
+intent-filter#android.content.SyncAdapter
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:15:13-17:29
+action#android.content.SyncAdapter
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:16:17-70
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:16:25-67
+meta-data#android.content.SyncAdapter
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:18:13-105
+	android:resource
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:18:67-102
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:18:24-66
+service#com.marianhello.bgloc.sync.AuthenticatorService
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:20:9-25:19
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:20:18-80
+intent-filter#android.accounts.AccountAuthenticator
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:21:13-23:29
+action#android.accounts.AccountAuthenticator
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:22:17-80
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:22:25-77
+meta-data#android.accounts.AccountAuthenticator
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:24:13-117
+	android:resource
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:24:77-114
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:24:24-76
+provider#com.marianhello.bgloc.sync.DummyContentProvider
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:26:9-181
+	android:authorities
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:26:19-66
+	android:syncable
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:26:155-178
+	android:exported
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:26:67-91
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:26:92-154
+service#com.marianhello.bgloc.LocationService
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:27:9-121
+	android:enabled
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:27:18-40
+	android:exported
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:27:41-65
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:27:66-118
+receiver#com.marianhello.bgloc.BootCompletedReceiver
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:28:9-32:20
+	android:enabled
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:28:19-41
+	android:exported
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:28:42-65
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:28:66-124
+intent-filter#android.intent.action.BOOT_COMPLETED
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:29:13-31:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:30:17-79
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:30:25-76
 uses-sdk
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:5-74
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:34:5-74
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\04f7c2a0cf937ddf419a595948889b06\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-11.8.0.aar\04f7c2a0cf937ddf419a595948889b06\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\a8db7c23cfc114acabdf0112129803ed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\a8db7c23cfc114acabdf0112129803ed\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\9176fdfefcbb0d6b1c6ef3c780334dc8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:21:5-23:54
 MERGED from [:CordovaLib] C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:25:5-44
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\018ebe26f166559df0a6944a140d3ddb\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-location-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-location-license-11.8.0.aar\018ebe26f166559df0a6944a140d3ddb\AndroidManifest.xml:4:5-43
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\3e42ef0ed581e893bd888f99e4596c66\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\3e42ef0ed581e893bd888f99e4596c66\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\5323df9a1b178587acab200b0b798599\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\5323df9a1b178587acab200b0b798599\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\b6422ffe0d08b22b312960e008bd2574\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\b6422ffe0d08b22b312960e008bd2574\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\48bbace8baace1ac814b09f117783930\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\48bbace8baace1ac814b09f117783930\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\56571da1777e76e2bb7911d48d053547\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\56571da1777e76e2bb7911d48d053547\AndroidManifest.xml:21:5-23:58
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\52120eef3e5378a3c21803190cac19df\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\52120eef3e5378a3c21803190cac19df\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\7633a6e12b06248fc8a1338fbe36456c\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\7633a6e12b06248fc8a1338fbe36456c\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\5635649dc8ce73d6ee8fb7502c6bf08a\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\5635649dc8ce73d6ee8fb7502c6bf08a\AndroidManifest.xml:4:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:25.2.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\873016b82cbcf939a1e4582e4ebf09ad\AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:42-71
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:34:42-71
 	android:minSdkVersion
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:14:15-41
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:34:15-41
 uses-permission#android.permission.WAKE_LOCK
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:15:5-68
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:35:5-68
 	android:name
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:15:22-65
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:35:22-65
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:16:5-81
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:36:5-81
 	android:name
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:16:22-78
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:36:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:17:5-79
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:37:5-79
 	android:name
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:17:22-76
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:37:22-76
 uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:18:5-89
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:38:5-89
 	android:name
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:18:22-86
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:38:22-86
 uses-permission#android.permisssion.INTERNET
-ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:19:5-68
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:39:5-68
 	android:name
-		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:19:22-65
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:39:22-65
+uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:40:5-80
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:40:22-77
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:41:5-71
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:41:22-68
+uses-permission#android.permission.READ_SYNC_SETTINGS
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:42:5-77
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:42:22-74
+uses-permission#android.permission.WRITE_SYNC_SETTINGS
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:43:5-78
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:43:22-75
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:44:5-81
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:44:22-78
+uses-permission#com.google.android.gms.permission.ACTIVITY_RECOGNITION
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:45:5-94
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:45:22-91
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:46:5-79
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:46:22-76
+uses-permission#android.hardware.location
+ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:47:5-65
+	android:name
+		ADDED from C:\Users\kaiqu\Documents\TCC\sisunit\platforms\android\app\src\main\AndroidManifest.xml:47:22-62
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\kaiqu\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\35173552e72700edc45e6c661a19fc3d\AndroidManifest.xml:24:13-79

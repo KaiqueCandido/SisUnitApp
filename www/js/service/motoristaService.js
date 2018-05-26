@@ -42,5 +42,8 @@ app.service('motoristaService', function($http, $rootScope, configValue) {
 		var locationJson = localizacao;
 		return $http.post(configValue.baseUrl + '/motorista/localizacaoAtual', locationJson);
 	};
-
+		
+	this.enviarLocalizacaoA2 = function(latitude, longitude) {		
+		return $http.get(configValue.baseUrl + '/motorista/localizacaoAtual/' + latitude + '/' + longitude);
+	};
 });

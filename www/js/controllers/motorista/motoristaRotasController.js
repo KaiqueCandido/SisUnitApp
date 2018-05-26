@@ -52,18 +52,23 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 	}
 
 	function enviarLocalizacaoAtual () {
+
 		cordova.plugins.backgroundMode.enable();
-    	$interval(function() {
-			navigator.geolocation.getCurrentPosition( function (position) {	
-				motoristaService.enviarLocalizacaoAtual(position.coords.latitude + ',' + position.coords.longitude)
-					.then(function sucess(response) {
-				}, function error(response) {
-					//Materialize.toast('Não foi possivel carregar as rotas', 5000, 'rounded toasts-error');
-					alert(response.data)
-					Materialize.toast(response.data, 5000, 'rounded toasts-error');
+
+		cordova.plugins.backgroundMode.on('activate', function() {
+   			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+   			setInterval(function () {
+            	navigator.geolocation.getCurrentPosition( function (position) {	
+					motoristaService.enviarLocalizacaoAtual(position.coords.latitude + ',' + position.coords.longitude)
+						.then(function sucess(response) {
+							console.log(response);
+					}, function error(response) {
+						console.log(response);
+						Materialize.toast(response.data, 5000, 'rounded toasts-error');
+					});
 				});
-			});
-		}, 1000)	
+        	}, 30000);
+		});
 	}
 
 	$scope.carregarRotas();
