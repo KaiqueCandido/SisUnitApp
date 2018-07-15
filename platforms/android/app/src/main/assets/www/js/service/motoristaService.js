@@ -38,12 +38,9 @@ app.service('motoristaService', function($http, $rootScope, configValue) {
 		return $http.put(configValue.baseUrl + '/motorista', motorista);
 	};
 
-	this.enviarLocalizacaoAtual = function(localizacao) {
-		var locationJson = localizacao;
-		return $http.post(configValue.baseUrl + '/motorista/localizacaoAtual', locationJson);
+	this.enviarLocalizacaoAtual = function(motoristaLocalizacaoVO) {
+		console.log(motoristaLocalizacaoVO);
+		return $http.post(configValue.baseUrl + '/motorista/localizacaoAtual', motoristaLocalizacaoVO);
 	};
 		
-	this.enviarLocalizacaoA2 = function(latitude, longitude) {		
-		return $http.get(configValue.baseUrl + '/motorista/localizacaoAtual/' + latitude + '/' + longitude);
-	};
 });

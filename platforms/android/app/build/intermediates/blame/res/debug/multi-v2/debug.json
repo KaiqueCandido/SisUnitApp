@@ -277,54 +277,20 @@
             "outputFile": "C:\\Users\\kaiqu\\Documents\\TCC\\sisunit\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\kaiqu\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\9176fdfefcbb0d6b1c6ef3c780334dc8\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4,7",
-                        "startColumns": "0,0",
-                        "startOffsets": "274,437",
-                        "endColumns": "63,166",
-                        "endOffsets": "337,603"
-                    },
-                    "to": {
-                        "startLines": "33,46",
-                        "startColumns": "4,4",
-                        "startOffsets": "1499,2838",
-                        "endColumns": "67,166",
-                        "endOffsets": "1562,3000"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\kaiqu\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\35173552e72700edc45e6c661a19fc3d\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "215,301,377,463,549,625,702,778,951,1052,1233,1354,1457,1637,1756,1868,1967,2155,2256,2437,2558,2733,2877,2936,2994",
-                        "endColumns": "85,75,85,85,75,76,75,75,100,180,120,102,179,118,111,98,187,100,180,120,174,143,58,57,74",
-                        "endOffsets": "300,376,462,548,624,701,777,853,1051,1232,1353,1456,1636,1755,1867,1966,2154,2255,2436,2557,2732,2876,2935,2993,3068"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,38,39,40,41,42,43,44,45,47,48,49,50,51,52,53,54,55",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,195,275,365,455,535,616,696,1798,1903,2084,2209,2316,2496,2619,2735,3005,3193,3298,3479,3604,3779,3927,3990,4052",
-                        "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78",
-                        "endOffsets": "190,270,360,450,530,611,691,771,1898,2079,2204,2311,2491,2614,2730,2833,3188,3293,3474,3599,3774,3922,3985,4047,4126"
-                    }
-                },
-                {
                     "source": "C:\\Users\\kaiqu\\Documents\\TCC\\sisunit\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "5,6,4,2,7,3",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "223,281,159,55,345,100",
-                        "endColumns": "57,63,63,44,60,58",
-                        "endOffsets": "276,340,218,95,401,154"
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "159,55,100",
+                        "endColumns": "63,44,58",
+                        "endOffsets": "218,95,154"
                     },
                     "to": {
-                        "startLines": "34,35,36,37,56,57",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "1567,1625,1689,1753,4131,4192",
-                        "endColumns": "57,63,63,44,60,58",
-                        "endOffsets": "1620,1684,1748,1793,4187,4246"
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,164",
+                        "endColumns": "63,44,58",
+                        "endOffsets": "114,159,218"
                     }
                 }
             ]

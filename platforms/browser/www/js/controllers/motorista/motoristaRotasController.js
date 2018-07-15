@@ -4,7 +4,7 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 	$rootScope.menuAtual = 'Rotas';
 
 	$rootScope.usuarioLogado = {};
-	$rootScope.usuarioLogado.id = 1;
+	$rootScope.usuarioLogado.id = 1;	
 
 	$scope.rotas = [];
 
@@ -18,6 +18,7 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 			}
 		}, function error(response) {
 			$rootScope.pageLoading = false;
+			console.log(response);
 			Materialize.toast('Não foi possivel carregar as rotas', 5000, 'rounded toasts-error');
 		});
 	};		
@@ -42,24 +43,21 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 		}		
 
 		var link = configValue.mapsUrlApi + "/?api=1&origin=" + origin + "&destination=" + destination + "&travelmode=driving&waypoints=" + waypoints;		
-		document.addEventListener('deviceready', enviarLocalizacaoAtual, false);
+		//document.addEventListener('deviceready', enviarLocalizacaoAtual(pontosDeParada), false);
+		enviarLocalizacaoAtual(pontosDeParada);
 		//window.location = link;
 	}
 
-	function onDeviceReady () {
-		cordova.plugins.backgroundMode.enable();
-	    $scope.enviarLocalizacaoAtual();
-	}
-
-	function enviarLocalizacaoAtual () {
-			
-		cordova.plugins.backgroundMode.enable();
-
-		cordova.plugins.backgroundMode.on('activate', function() {
+	function enviarLocalizacaoAtual (pontosDeParada) {
+		// cordova.plugins.backgroundMode.enable();
+		// cordova.plugins.backgroundMode.on('activate', function() {
    			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-   			setInterval(function () {
-            	navigator.geolocation.getCurrentPosition( function (position) {	
-					motoristaService.enviarLocalizacaoAtual(position.coords.latitude + ',' + position.coords.longitude)
+   			// setInterval(function () {
+            	navigator.geolocation.getCurrentPosition(function (position) {
+            		// Montando objeto 'MotoristaLocalizacaoVO' para enviar ao servidor.
+            		$scope.montaMotoristaLocalizacao(position.coords.latitude, position.coords.longitude, pontosDeParada);
+					// Acessando serviço 'motoristaService' e enviando o objeto montado ao servidor.
+					motoristaService.enviarLocalizacaoAtual($scope.motoristaLocalizacaoVO)
 						.then(function sucess(response) {
 							console.log(response);
 					}, function error(response) {
@@ -67,8 +65,18 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 						Materialize.toast(response.data, 5000, 'rounded toasts-error');
 					});
 				});
-        	}, 30000);
-		});
+        	// }, 30000);
+		// });
+	}
+
+	// Metodo para montar o objeto 'MotoristaLocalizacaoVO'
+	$scope.montaMotoristaLocalizacao = function (latitude, longitude, pontosDeParada) {
+		$scope.motoristaLocalizacaoVO = {};
+		$scope.motoristaLocalizacaoVO.idMotorista = $rootScope.usuarioLogado.id;
+		$scope.motoristaLocalizacaoVO.latitude = latitude;
+		$scope.motoristaLocalizacaoVO.longitude = longitude;
+		$scope.motoristaLocalizacaoVO.pontosDeParada = pontosDeParada;
+		return $scope.motoristaLocalizacaoVO;
 	}
 
 	$scope.carregarRotas();

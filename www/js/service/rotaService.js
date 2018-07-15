@@ -28,7 +28,7 @@ app.service('rotaService', function($http, $state, $rootScope, configValue) {
 
 	this.listarPorMotorista = function(idMotorista) {
 		$rootScope.pageLoading = true;
-		return $http.post(configValue.baseUrl + '/rota/motorista/' + idMotorista);
+		return $http.get(configValue.baseUrl + '/rota/motorista/' + idMotorista);
 	};
 
 	this.inativar = function(rota) {
