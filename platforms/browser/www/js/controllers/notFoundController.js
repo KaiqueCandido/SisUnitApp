@@ -1,6 +1,6 @@
-var app = angular.module('app')
+// var app = angular.module('app')
 
-app.controller('notFoundController', function($scope, $state,){	
+// app.controller('notFoundController', function($scope, $state,){	
 		
 
-});
+// });

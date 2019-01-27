@@ -7,13 +7,13 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "br.com.sisunit"
     },
     "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "br.com.sisunit"
     },
-    "cordova-plugin-android-permissions": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "br.com.sisunit"
     }
   },

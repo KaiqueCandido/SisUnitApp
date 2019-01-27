@@ -39,7 +39,6 @@ app.service('motoristaService', function($http, $rootScope, configValue) {
 	};
 
 	this.enviarLocalizacaoAtual = function(motoristaLocalizacaoVO) {
-		console.log(motoristaLocalizacaoVO);
 		return $http.post(configValue.baseUrl + '/motorista/localizacaoAtual', motoristaLocalizacaoVO);
 	};
 		

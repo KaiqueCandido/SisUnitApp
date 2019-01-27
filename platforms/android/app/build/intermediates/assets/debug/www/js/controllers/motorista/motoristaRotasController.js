@@ -31,42 +31,47 @@ app.controller('motoristaRotasController', function($scope, $rootScope, $state, 
 		var waypoints = '';
 
 		for (var i = 1; i < (pontosDeParada.length -1); i++) {
-			
 			waypoints = waypoints + pontosDeParada[i].latitude + "," + pontosDeParada[i].longitude;
-
 			if ((i + 1) < (pontosDeParada.length -1)) {
-
 				waypoints = waypoints + "|";
-	
 			}
-
 		}		
 
-		var link = configValue.mapsUrlApi + "/?api=1&origin=" + origin + "&destination=" + destination + "&travelmode=driving&waypoints=" + waypoints;		
-		//document.addEventListener('deviceready', enviarLocalizacaoAtual(pontosDeParada), false);
-		enviarLocalizacaoAtual(pontosDeParada);
+		var link = configValue.mapsUrlApi + "/?api=1&origin=" + origin + "&destination=" + destination + "&travelmode=driving&waypoints=" + waypoints;
+
+		// document.addEventListener('deviceready', enviarLocalizacaoAtual(pontosDeParada), false);
+		
+		navigator.geolocation.getCurrentPosition(function (position) {
+			$scope.montaMotoristaLocalizacao(position.coords.latitude, position.coords.longitude, pontosDeParada);
+			console.log($scope.motoristaLocalizacaoVO);
+			motoristaService.enviarLocalizacaoAtual($scope.motoristaLocalizacaoVO)
+			.then(function sucess(response) {
+				console.log(response);
+			}, function error(response) {
+				console.log(response);
+				Materialize.toast(response.data, 5000, 'rounded toasts-error');
+			});
+		});
 		//window.location = link;
 	}
 
 	function enviarLocalizacaoAtual (pontosDeParada) {
-		// cordova.plugins.backgroundMode.enable();
-		// cordova.plugins.backgroundMode.on('activate', function() {
-   			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-   			// setInterval(function () {
-            	navigator.geolocation.getCurrentPosition(function (position) {
-            		// Montando objeto 'MotoristaLocalizacaoVO' para enviar ao servidor.
-            		$scope.montaMotoristaLocalizacao(position.coords.latitude, position.coords.longitude, pontosDeParada);
-					// Acessando serviço 'motoristaService' e enviando o objeto montado ao servidor.
+		cordova.plugins.backgroundMode.enable();
+		cordova.plugins.backgroundMode.on('activate', function() {
+			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+			setInterval(function () {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					$scope.montaMotoristaLocalizacao(position.coords.latitude, position.coords.longitude, pontosDeParada);
 					motoristaService.enviarLocalizacaoAtual($scope.motoristaLocalizacaoVO)
-						.then(function sucess(response) {
-							console.log(response);
+					.then(function sucess(response) {
+						console.log(response);
 					}, function error(response) {
 						console.log(response);
 						Materialize.toast(response.data, 5000, 'rounded toasts-error');
 					});
 				});
-        	// }, 30000);
-		// });
+			}, 30000);
+		});
 	}
 
 	// Metodo para montar o objeto 'MotoristaLocalizacaoVO'
